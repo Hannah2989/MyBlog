@@ -19,8 +19,8 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public void delete(Blog blog) {
-        blogRepository.delete(blog);
+    public void delete(int id) {
+        blogRepository.deleteById(id);
     }
 
     @Override
