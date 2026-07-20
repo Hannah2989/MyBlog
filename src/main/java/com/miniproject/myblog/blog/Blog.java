@@ -12,19 +12,14 @@ public class Blog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     @Column(length = 500)
     private String title;
-
     @Column(length = 10000)
     private String description;
-
     @Column(length = 1000)
     private String image;
-
     @CreationTimestamp
     private LocalDateTime createdAt;
-
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
