@@ -20,7 +20,7 @@ public class BlogController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteById(int id) {
+    public void deleteById(@PathVariable int id) {
         blogService.delete(id);
     }
 
