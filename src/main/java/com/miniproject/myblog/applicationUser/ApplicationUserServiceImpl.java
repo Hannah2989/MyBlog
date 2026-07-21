@@ -2,8 +2,6 @@ package com.miniproject.myblog.applicationUser;
 
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class ApplicationUserServiceImpl implements ApplicationUserService{
 
@@ -19,20 +17,6 @@ public class ApplicationUserServiceImpl implements ApplicationUserService{
     }
 
     @Override
-    public void delete(int id) {
-        applicationUserRepository.deleteById(id);
-    }
-
-    @Override
-    public ApplicationUser findById(int id) {
-        return applicationUserRepository.findById(id).orElse(null);
-    }
-
-    @Override
-    public List<ApplicationUser> findAll() {
-        return applicationUserRepository.findAll();
-    }
-
     public  ApplicationUser findByUsernameAndPassword(String username,String password){
         return applicationUserRepository.findByUsernameAndPassword(username, password);
     }
