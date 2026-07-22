@@ -1,41 +1,50 @@
 package com.miniproject.myblog.comment;
 
+import com.miniproject.myblog.blog.Blog;
+import com.miniproject.myblog.blog.BlogService;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
-@RestController
+@Controller
 @RequestMapping("/comments")
 public class CommentController {
 
-    private final CommentServiceImpl commentService;
+    private final CommentService commentService;
+    private final BlogService blogService;
 
-    public CommentController(CommentServiceImpl commentService) {
+    public CommentController(CommentService commentService,
+                             BlogService blogService) {
         this.commentService = commentService;
+        this.blogService = blogService;
     }
 
-    @GetMapping
-    public List<Comment> getAllComments() {
-        return commentService.getAllComments();
+    @PostMapping("/blogs/{blogId}")
+    public String createComment(@PathVariable int blogId,
+                                @ModelAttribute Comment comment) {
+
+        Blog blog = blogService.findById(blogId);
+
+        comment.setBlog(blog);
+
+        commentService.createComment(comment);
+
+        return "redirect:/blogs/" + blogId;
     }
 
-    @GetMapping("/{id}")
-    public Comment getCommentById(@PathVariable int id) {
-        return commentService.findCommentById(id);
+    @GetMapping("/approve/{id}")
+    public String approveComment(@PathVariable int id) {
+
+        commentService.approveComment(id);
+
+        return "redirect:/blogs";
     }
 
-    @PostMapping
-    public Comment createComment(@RequestBody Comment comment) {
-        return commentService.createComment(comment);
-    }
+    @GetMapping("/delete/{id}")
+    public String deleteComment(@PathVariable int id) {
 
-    @DeleteMapping("/{id}")
-    public void deleteComment(@PathVariable int id) {
         commentService.deleteComment(id);
+
+        return "redirect:/blogs";
     }
 
-    @PutMapping("/{id}/approve")
-    public Comment approveComment(@PathVariable int id) {
-        return commentService.approveComment(id);
-    }
 }
