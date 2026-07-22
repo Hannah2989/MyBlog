@@ -11,10 +11,10 @@ public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
+    private int id;
     private String description;
     private String username;
-    private Boolean approved;
+    private Boolean approved = false;
     @CreationTimestamp
     private LocalDateTime createdAt;
     @ManyToOne
