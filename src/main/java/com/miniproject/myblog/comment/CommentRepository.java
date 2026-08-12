@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface CommentRepository extends JpaRepository<Comment, Integer> {
 
+    List<Comment> findCommentByBlogIdAndApprovedTrue(int blogId);
 
 }
