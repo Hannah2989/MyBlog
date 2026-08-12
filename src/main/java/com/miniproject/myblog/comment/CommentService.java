@@ -4,13 +4,11 @@ import java.util.List;
 
 public interface CommentService {
 
-    List<Comment> getAllComments();
+    List<Comment> findCommentByBlog(int blogId);
 
-    Comment findCommentById(int id);
+    List<Comment> findAll();
 
-    Comment createComment(Comment comment);
+    void saveComment(Comment comment);
 
-    void deleteComment(int id);
-
-    Comment approveComment(int id);
+    void approvedComment(int commentId);
 }
