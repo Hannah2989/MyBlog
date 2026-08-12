@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>افزودن وبلاگ | کتاب‌خانه</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Tahoma, Arial, sans-serif;
+            background: #fff3b0;
+            color: #540b0e;
+        }
+
+        button,
+        input,
+        textarea,
+        select {
+            font-family: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        /* ================================
+           HEADER
+        ================================= */
+
+        .header {
+            height: 75px;
+
+            background: #540b0e;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 45px;
+
+            color: #fff3b0;
+
+            box-shadow:
+                    0 5px 20px rgba(84, 11, 14, .15);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 12px;
+
+            background: #e09f3e;
+
+            color: #540b0e;
+
+            font-size: 21px;
+        }
+
+        .admin-label {
+            font-size: 11px;
+            color: #e09f3e;
+        }
+
+        /* ================================
+           MAIN
+        ================================= */
+
+        .container {
+            width: min(1100px, 92%);
+
+            margin: 40px auto 70px;
+        }
+
+        .page-title {
+            margin-bottom: 30px;
+        }
+
+        .page-title h1 {
+            font-size: 27px;
+            margin-bottom: 8px;
+        }
+
+        .page-title p {
+            font-size: 12px;
+            color: #335c67;
+        }
+
+        /* ================================
+           LAYOUT
+        ================================= */
+
+        .content {
+            display: grid;
+
+            grid-template-columns:
+                1fr 330px;
+
+            gap: 25px;
+
+            align-items: start;
+        }
+
+        /* ================================
+           CARD
+        ================================= */
+
+        .card {
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 30px;
+
+            box-shadow:
+                    0 15px 40px
+                    rgba(84, 11, 14, .10);
+        }
+
+        .card-title {
+            font-size: 16px;
+
+            margin-bottom: 25px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+        }
+
+        .card-title-icon {
+            width: 34px;
+            height: 34px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background: #fff3b0;
+
+            border-radius: 9px;
+        }
+
+        /* ================================
+           FORM
+        ================================= */
+
+        .form-group {
+            margin-bottom: 21px;
+        }
+
+        .form-group label {
+            display: block;
+
+            margin-bottom: 8px;
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+            color: #540b0e;
+        }
+
+        .required {
+            color: #9e2a2b;
+        }
+
+        .input,
+        .textarea,
+        .select {
+            width: 100%;
+
+            border: 1px solid #eadfa4;
+
+            background: #fffdf1;
+
+            border-radius: 10px;
+
+            outline: none;
+
+            color: #540b0e;
+
+            font-size: 12px;
+
+            transition: .25s;
+        }
+
+        .input,
+        .select {
+            height: 48px;
+
+            padding: 0 15px;
+        }
+
+        .textarea {
+            min-height: 220px;
+
+            resize: vertical;
+
+            padding: 15px;
+
+            line-height: 2;
+        }
+
+        .input:focus,
+        .textarea:focus,
+        .select:focus {
+            border-color: #e09f3e;
+
+            background: white;
+
+            box-shadow:
+                    0 0 0 3px
+                    rgba(224, 159, 62, .12);
+        }
+
+        .input::placeholder,
+        .textarea::placeholder {
+            color: #aaa080;
+        }
+
+        /* ================================
+           TWO COLUMNS
+        ================================= */
+
+        .two-columns {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 15px;
+        }
+
+        /* ================================
+           IMAGE UPLOAD
+        ================================= */
+
+        .image-upload {
+            border: 2px dashed #e09f3e;
+
+            border-radius: 15px;
+
+            min-height: 210px;
+
+            background: #fffdf1;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 20px;
+
+            transition: .25s;
+
+            cursor: pointer;
+        }
+
+        .image-upload:hover {
+            background: #fff8d5;
+
+            border-color: #9e2a2b;
+        }
+
+        .upload-icon {
+            width: 55px;
+            height: 55px;
+
+            border-radius: 50%;
+
+            background: #fff3b0;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 24px;
+
+            margin-bottom: 12px;
+        }
+
+        .image-upload strong {
+            font-size: 12px;
+
+            margin-bottom: 6px;
+        }
+
+        .image-upload span {
+            color: #335c67;
+
+            font-size: 9px;
+
+            line-height: 1.8;
+        }
+
+        #imageInput {
+            display: none;
+        }
+
+        /* ================================
+           IMAGE PREVIEW
+        ================================= */
+
+        .preview {
+            display: none;
+
+            width: 100%;
+
+            margin-top: 15px;
+
+            border-radius: 12px;
+
+            overflow: hidden;
+        }
+
+        .preview img {
+            width: 100%;
+
+            max-height: 200px;
+
+            object-fit: cover;
+        }
+
+        /* ================================
+           BUTTONS
+        ================================= */
+
+        .actions {
+            display: flex;
+
+            gap: 12px;
+
+            margin-top: 30px;
+        }
+
+        .btn {
+            height: 48px;
+
+            border-radius: 10px;
+
+            padding: 0 25px;
+
+            border: none;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            transition: .25s;
+        }
+
+        .btn-primary {
+            background:
+                    linear-gradient(
+                            135deg,
+                            #540b0e,
+                            #9e2a2b
+                    );
+
+            color: #fff3b0;
+
+            flex: 1;
+
+            box-shadow:
+                    0 8px 18px
+                    rgba(84, 11, 14, .16);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                    0 12px 23px
+                    rgba(84, 11, 14, .22);
+        }
+
+        .btn-secondary {
+            background: #fff3b0;
+
+            color: #540b0e;
+        }
+
+        .btn-secondary:hover {
+            background: #e09f3e;
+        }
+
+        /* ================================
+           SIDE PANEL
+        ================================= */
+
+        .side-card {
+            background: #540b0e;
+
+            color: #fff3b0;
+
+            border-radius: 20px;
+
+            padding: 25px;
+
+            margin-bottom: 20px;
+
+            box-shadow:
+                    0 15px 40px
+                    rgba(84, 11, 14, .13);
+        }
+
+        .side-card h3 {
+            font-size: 15px;
+
+            margin-bottom: 20px;
+        }
+
+        .tip {
+            display: flex;
+
+            gap: 12px;
+
+            margin-bottom: 17px;
+        }
+
+        .tip-icon {
+            flex-shrink: 0;
+
+            width: 32px;
+            height: 32px;
+
+            border-radius: 9px;
+
+            background: #9e2a2b;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tip p {
+            font-size: 10px;
+
+            color: #eadfa4;
+
+            line-height: 1.9;
+        }
+
+        /* ================================
+           PREVIEW CARD
+        ================================= */
+
+        .live-preview {
+            background: white;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            box-shadow:
+                    0 15px 40px
+                    rgba(84, 11, 14, .10);
+        }
+
+        .preview-header {
+            background: #335c67;
+
+            color: #fff3b0;
+
+            padding: 18px 20px;
+
+            font-size: 12px;
+
+            font-weight: bold;
+        }
+
+        .preview-body {
+            padding: 20px;
+        }
+
+        .preview-cover {
+            width: 100%;
+
+            height: 140px;
+
+            border-radius: 12px;
+
+            background:
+                    linear-gradient(
+                            135deg,
+                            #9e2a2b,
+                            #540b0e
+                    );
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 45px;
+
+            margin-bottom: 17px;
+        }
+
+        .preview-category {
+            display: inline-block;
+
+            padding: 5px 10px;
+
+            background: #fff3b0;
+
+            color: #9e2a2b;
+
+            border-radius: 20px;
+
+            font-size: 9px;
+
+            margin-bottom: 10px;
+        }
+
+        .preview-title {
+            font-size: 16px;
+
+            line-height: 1.7;
+
+            margin-bottom: 8px;
+        }
+
+        .preview-description {
+            font-size: 10px;
+
+            color: #335c67;
+
+            line-height: 1.9;
+        }
+
+        /* ================================
+           RESPONSIVE
+        ================================= */
+
+        @media (max-width: 850px) {
+
+            .content {
+                grid-template-columns: 1fr;
+            }
+
+            .side-section {
+                display: grid;
+
+                grid-template-columns:
+                    1fr 1fr;
+
+                gap: 20px;
+            }
+
+            .side-card {
+                margin-bottom: 0;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .header {
+                padding: 0 20px;
+            }
+
+            .container {
+                width: 94%;
+
+                margin-top: 25px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+
+            .side-section {
+                grid-template-columns: 1fr;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            .page-title h1 {
+                font-size: 22px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header class="header">
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            📖
+        </div>
+
+        <div>
+
+            <div>
+                کتاب‌خانه
+            </div>
+
+            <div class="admin-label">
+                پنل مدیریت
+            </div>
+
+        </div>
+
+    </div>
+
+    <div>
+        👤 مدیر
+    </div>
+
+</header>
+
+
+<!-- =========================================
+     MAIN
+========================================= -->
+
+<main class="container">
+
+
+    <div class="page-title">
+
+        <h1>
+            ✨ افزودن وبلاگ جدید
+        </h1>
+
+        <p>
+            داستان، تجربه یا دانشت را با خوانندگان کتاب‌خانه به اشتراک بگذار.
+        </p>
+
+    </div>
+
+
+    <div class="content">
+
+
+        <!-- =====================================
+             FORM
+        ====================================== -->
+
+        <section class="card">
+
+
+            <div class="card-title">
+
+                <div class="card-title-icon">
+                    ✍️
+                </div>
+
+                اطلاعات وبلاگ
+
+            </div>
+
+
+            <form
+                    action="/admin/blogs/add"
+                    method="post"
+                    enctype="multipart/form-data">
+
+
+                <!-- TITLE -->
+
+                <div class="form-group">
+
+                    <label>
+                        عنوان وبلاگ
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                            class="input"
+                            type="text"
+                            name="title"
+                            id="title"
+                            placeholder="مثلاً: چرا باید شازده کوچولو را بخوانیم؟"
+                            maxlength="150"
+                            required>
+
+                </div>
+
+
+                <!-- CATEGORY + AUTHOR -->
+
+                <div class="two-columns">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            دسته‌بندی
+                        </label>
+
+                        <select
+                                class="select"
+                                name="category">
+
+                            <option value="">
+                                انتخاب دسته‌بندی
+                            </option>
+
+                            <option value="fiction">
+                                داستان و رمان
+                            </option>
+
+                            <option value="literature">
+                                ادبیات
+                            </option>
+
+                            <option value="philosophy">
+                                فلسفه
+                            </option>
+
+                            <option value="psychology">
+                                روان‌شناسی
+                            </option>
+
+                            <option value="history">
+                                تاریخی
+                            </option>
+
+                            <option value="science">
+                                علمی
+                            </option>
+
+                            <option value="other">
+                                سایر
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            نویسنده کتاب
+                        </label>
+
+                        <input
+                                class="input"
+                                type="text"
+                                name="bookAuthor"
+                                placeholder="مثلاً: آنتوان دو سنت اگزوپری">
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- SHORT DESCRIPTION -->
+
+                <div class="form-group">
+
+                    <label>
+                        خلاصه کوتاه
+                        <span class="required">*</span>
+                    </label>
+
+                    <textarea
+                            class="textarea"
+                            style="min-height: 110px;"
+                            name="summary"
+                            placeholder="یک معرفی کوتاه و جذاب از این وبلاگ بنویس..."
+                            maxlength="500"
+                            required></textarea>
+
+                </div>
+
+
+                <!-- CONTENT -->
+
+                <div class="form-group">
+
+                    <label>
+                        متن وبلاگ
+                        <span class="required">*</span>
+                    </label>
+
+                    <textarea
+                            class="textarea"
+                            name="content"
+                            placeholder="متن کامل وبلاگ را اینجا بنویس..."
+                            required></textarea>
+
+                </div>
+
+
+                <!-- IMAGE -->
+
+                <div class="form-group">
+
+                    <label>
+                        تصویر وبلاگ
+                    </label>
+
+
+                    <label
+                            class="image-upload"
+                            for="imageInput">
+
+                        <div class="upload-icon">
+                            🖼️
+                        </div>
+
+                        <strong>
+                            تصویر را انتخاب کنید
+                        </strong>
+
+                        <span>
+                            فرمت‌های JPG، PNG یا WEBP
+                            <br>
+                            حداکثر حجم پیشنهادی ۵ مگابایت
+                        </span>
+
+                    </label>
+
+
+                    <input
+                            type="file"
+                            id="imageInput"
+                            name="image"
+                            accept="image/png,image/jpeg,image/webp">
+
+
+                    <div
+                            class="preview"
+                            id="preview">
+
+                        <img
+                                id="previewImage"
+                                src=""
+                                alt="پیش‌نمایش تصویر">
+
+                    </div>
+
+                </div>
+
+
+                <!-- ACTIONS -->
+
+                <div class="actions">
+
+                    <button
+                            type="submit"
+                            class="btn btn-primary">
+
+                        ✨ انتشار وبلاگ
+
+                    </button>
+
+                    <button
+                            type="reset"
+                            class="btn btn-secondary">
+
+                        پاک کردن فرم
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+
+        </section>
+
+
+        <!-- =====================================
+             SIDE
+        ====================================== -->
+
+        <aside class="side-section">
+
+
+            <!-- TIPS -->
+
+            <div class="side-card">
+
+                <h3>
+                    💡 چند نکته برای یک وبلاگ خوب
+                </h3>
+
+
+                <div class="tip">
+
+                    <div class="tip-icon">
+                        ۱
+                    </div>
+
+                    <p>
+                        عنوانی انتخاب کن که کنجکاوی
+                        خواننده را برانگیزد.
+                    </p>
+
+                </div>
+
+
+                <div class="tip">
+
+                    <div class="tip-icon">
+                        ۲
+                    </div>
+
+                    <p>
+                        متن را به پاراگراف‌های کوتاه
+                        و خوانا تقسیم کن.
+                    </p>
+
+                </div>
+
+
+                <div class="tip">
+
+                    <div class="tip-icon">
+                        ۳
+                    </div>
+
+                    <p>
+                        یک تصویر مرتبط می‌تواند
+                        جذابیت مقاله را بیشتر کند.
+                    </p>
+
+                </div>
+
+
+                <div class="tip">
+
+                    <div class="tip-icon">
+                        ۴
+                    </div>
+
+                    <p>
+                        دیدگاه و تجربه شخصی خودت
+                        را با خواننده به اشتراک بگذار.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- PREVIEW -->
+
+            <div class="live-preview">
+
+                <div class="preview-header">
+
+                    👁 پیش‌نمایش مقاله
+
+                </div>
+
+
+                <div class="preview-body">
+
+
+                    <div class="preview-cover">
+                        📚
+                    </div>
+
+
+                    <span
+                            class="preview-category"
+                            id="previewCategory">
+
+                        دسته‌بندی
+
+                    </span>
+
+
+                    <h2
+                            class="preview-title"
+                            id="previewTitle">
+
+                        عنوان وبلاگ شما
+
+                    </h2>
+
+
+                    <p
+                            class="preview-description"
+                            id="previewDescription">
+
+                        خلاصه وبلاگ شما در این قسمت
+                        نمایش داده خواهد شد.
+
+                    </p>
+
+
+                </div>
+
+            </div>
+
+
+        </aside>
+
+
+    </div>
+
+</main>
+
+
+<script>
+
+    /* =========================================
+       IMAGE PREVIEW
+    ========================================= */
+
+    const imageInput =
+        document.getElementById("imageInput");
+
+    const preview =
+        document.getElementById("preview");
+
+    const previewImage =
+        document.getElementById("previewImage");
+
+
+    imageInput.addEventListener(
+        "change",
+        function () {
+
+            const file =
+                this.files[0];
+
+            if (file) {
+
+                const reader =
+                    new FileReader();
+
+                reader.onload =
+                    function (event) {
+
+                        previewImage.src =
+                            event.target.result;
+
+                        preview.style.display =
+                            "block";
+
+                    };
+
+                reader.readAsDataURL(file);
+
+            }
+
+        }
+    );
+
+
+    /* =========================================
+       LIVE TITLE PREVIEW
+    ========================================= */
+
+    const title =
+        document.getElementById("title");
+
+    const previewTitle =
+        document.getElementById("previewTitle");
+
+
+    title.addEventListener(
+        "input",
+        function () {
+
+            if (this.value.trim() === "") {
+
+                previewTitle.innerText =
+                    "عنوان وبلاگ شما";
+
+            } else {
+
+                previewTitle.innerText =
+                    this.value;
+
+            }
+
+        }
+    );
+
+
+    /* =========================================
+       LIVE DESCRIPTION PREVIEW
+    ========================================= */
+
+    const summary =
+        document.querySelector(
+            'textarea[name="summary"]'
+        );
+
+    const previewDescription =
+        document.getElementById(
+            "previewDescription"
+        );
+
+
+    summary.addEventListener(
+        "input",
+        function () {
+
+            if (this.value.trim() === "") {
+
+                previewDescription.innerText =
+                    "خلاصه وبلاگ شما در این قسمت نمایش داده خواهد شد.";
+
+            } else {
+
+                previewDescription.innerText =
+                    this.value;
+
+            }
+
+        }
+    );
+
+
+    /* =========================================
+       CATEGORY PREVIEW
+    ========================================= */
+
+    const category =
+        document.querySelector(
+            'select[name="category"]'
+        );
+
+    const previewCategory =
+        document.getElementById(
+            "previewCategory"
+        );
+
+
+    category.addEventListener(
+        "change",
+        function () {
+
+            if (this.value === "") {
+
+                previewCategory.innerText =
+                    "دسته‌بندی";
+
+            } else {
+
+                previewCategory.innerText =
+                    this.options[
+                        this.selectedIndex
+                        ].text;
+
+            }
+
+        }
+    );
+
+</script>
+
+
+</body>
+
+</html>
