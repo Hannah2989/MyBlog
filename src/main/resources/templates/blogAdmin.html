@@ -1,0 +1,2677 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>مدیریت وبلاگ‌ها | پنل مدیریت</title>
+
+
+    <style>
+
+        /* =====================================
+           RESET
+        ===================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+
+            background: #fff3b0;
+
+            color: #540b0e;
+
+            line-height: 1.8;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button,
+        input,
+        textarea,
+        select {
+            font-family: inherit;
+        }
+
+
+        /* =====================================
+           LAYOUT
+        ===================================== */
+
+        .dashboard {
+            min-height: 100vh;
+
+            display: flex;
+        }
+
+
+        /* =====================================
+           SIDEBAR
+        ===================================== */
+
+        .sidebar {
+
+            width: 260px;
+
+            min-height: 100vh;
+
+            background: #540b0e;
+
+            color: #fff3b0;
+
+            padding: 25px 18px;
+
+            position: fixed;
+
+            right: 0;
+            top: 0;
+
+            z-index: 1000;
+
+            display: flex;
+
+            flex-direction: column;
+        }
+
+
+        .admin-logo {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 10px;
+
+            margin-bottom: 40px;
+        }
+
+
+        .logo-icon {
+
+            width: 45px;
+            height: 45px;
+
+            background: #e09f3e;
+
+            color: #540b0e;
+
+            border-radius: 13px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 23px;
+        }
+
+
+        .logo-text strong {
+
+            display: block;
+
+            font-size: 19px;
+        }
+
+
+        .logo-text span {
+
+            font-size: 11px;
+
+            color: #dfcfa0;
+        }
+
+
+        .menu-title {
+
+            color: #c9b98b;
+
+            font-size: 11px;
+
+            margin: 0 12px 12px;
+        }
+
+
+        .sidebar-menu {
+
+            list-style: none;
+        }
+
+
+        .sidebar-menu li {
+
+            margin-bottom: 6px;
+        }
+
+
+        .sidebar-menu a {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 13px 15px;
+
+            border-radius: 12px;
+
+            color: #dfcfa0;
+
+            font-size: 14px;
+
+            transition: .3s;
+        }
+
+
+        .sidebar-menu a:hover {
+
+            background: rgba(224,159,62,.12);
+
+            color: #e09f3e;
+        }
+
+
+        .sidebar-menu a.active {
+
+            background: #9e2a2b;
+
+            color: #fff3b0;
+
+            box-shadow:
+                    0 8px 20px rgba(158,42,43,.25);
+        }
+
+
+        .menu-icon {
+
+            width: 25px;
+
+            text-align: center;
+
+            font-size: 17px;
+        }
+
+
+        .sidebar-bottom {
+
+            margin-top: auto;
+        }
+
+
+        .admin-profile {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 15px;
+
+            border-radius: 14px;
+
+            background: rgba(255,243,176,.07);
+        }
+
+
+        .profile-avatar {
+
+            width: 40px;
+            height: 40px;
+
+            border-radius: 50%;
+
+            background: #e09f3e;
+
+            color: #540b0e;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-weight: bold;
+        }
+
+
+        .profile-info strong {
+
+            display: block;
+
+            font-size: 13px;
+        }
+
+
+        .profile-info span {
+
+            color: #c9b98b;
+
+            font-size: 10px;
+        }
+
+
+        /* =====================================
+           MAIN
+        ===================================== */
+
+        .main {
+
+            margin-right: 260px;
+
+            width: calc(100% - 260px);
+
+            min-height: 100vh;
+        }
+
+
+        /* =====================================
+           TOPBAR
+        ===================================== */
+
+        .topbar {
+
+            height: 75px;
+
+            background: white;
+
+            border-bottom:
+                    1px solid rgba(84,11,14,.08);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 35px;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 900;
+        }
+
+
+        .page-title h1 {
+
+            font-size: 22px;
+
+            color: #540b0e;
+        }
+
+
+        .page-title span {
+
+            font-size: 12px;
+
+            color: #335c67;
+        }
+
+
+        .top-actions {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+        }
+
+
+        .notification {
+
+            width: 40px;
+            height: 40px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #fff3b0;
+
+            color: #540b0e;
+
+            cursor: pointer;
+        }
+
+
+        .view-site {
+
+            background: #335c67;
+
+            color: #fff3b0;
+
+            padding: 9px 16px;
+
+            border-radius: 9px;
+
+            font-size: 12px;
+
+            transition: .3s;
+        }
+
+
+        .view-site:hover {
+
+            background: #e09f3e;
+
+            color: #540b0e;
+        }
+
+
+        /* =====================================
+           CONTENT
+        ===================================== */
+
+        .content {
+
+            padding: 35px;
+        }
+
+
+        /* =====================================
+           WELCOME
+        ===================================== */
+
+        .welcome {
+
+            background:
+
+                    radial-gradient(
+                            circle at 85% 30%,
+                            rgba(224,159,62,.2),
+                            transparent 25%
+                    ),
+
+                    linear-gradient(
+                            135deg,
+                            #540b0e,
+                            #9e2a2b
+                    );
+
+            color: #fff3b0;
+
+            border-radius: 22px;
+
+            padding: 30px 35px;
+
+            margin-bottom: 30px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 25px;
+        }
+
+
+        .welcome h2 {
+
+            font-size: 26px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .welcome p {
+
+            color: #eadfa4;
+
+            font-size: 13px;
+        }
+
+
+        .welcome-decoration {
+
+            font-size: 70px;
+
+            opacity: .2;
+        }
+
+
+        /* =====================================
+           STATISTICS
+        ===================================== */
+
+        .stats {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 18px;
+
+            margin-bottom: 35px;
+        }
+
+
+        .stat-card {
+
+            background: white;
+
+            border-radius: 18px;
+
+            padding: 22px;
+
+            box-shadow:
+                    0 8px 25px rgba(84,11,14,.06);
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            transition: .3s;
+        }
+
+
+        .stat-card:hover {
+
+            transform: translateY(-4px);
+
+            box-shadow:
+                    0 14px 30px rgba(84,11,14,.1);
+        }
+
+
+        .stat-icon {
+
+            width: 52px;
+            height: 52px;
+
+            border-radius: 14px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 23px;
+        }
+
+
+        .stat-icon.blog {
+
+            background: #fff3b0;
+        }
+
+
+        .stat-icon.published {
+
+            background: #e8eee5;
+        }
+
+
+        .stat-icon.draft {
+
+            background: #f6dfdf;
+        }
+
+
+        .stat-icon.views {
+
+            background: #dce9eb;
+        }
+
+
+        .stat-info span {
+
+            display: block;
+
+            color: #335c67;
+
+            font-size: 11px;
+        }
+
+
+        .stat-info strong {
+
+            display: block;
+
+            font-size: 25px;
+
+            color: #540b0e;
+        }
+
+
+        /* =====================================
+           SECTION HEADER
+        ===================================== */
+
+        .section-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 18px;
+        }
+
+
+        .section-header h2 {
+
+            font-size: 21px;
+
+            color: #540b0e;
+        }
+
+
+        .add-btn {
+
+            background: #9e2a2b;
+
+            color: #fff3b0;
+
+            border: none;
+
+            padding: 11px 18px;
+
+            border-radius: 10px;
+
+            cursor: pointer;
+
+            font-size: 13px;
+
+            transition: .3s;
+        }
+
+
+        .add-btn:hover {
+
+            background: #540b0e;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =====================================
+           BLOG MANAGEMENT
+        ===================================== */
+
+        .management-box {
+
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 25px;
+
+            box-shadow:
+                    0 8px 30px rgba(84,11,14,.06);
+        }
+
+
+        /* =====================================
+           SEARCH
+        ===================================== */
+
+        .toolbar {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            margin-bottom: 22px;
+        }
+
+
+        .search-box {
+
+            position: relative;
+
+            flex: 1;
+
+            max-width: 450px;
+        }
+
+
+        .search-box input {
+
+            width: 100%;
+
+            padding: 12px 42px 12px 15px;
+
+            border: 1px solid #eadfa4;
+
+            border-radius: 10px;
+
+            outline: none;
+
+            color: #540b0e;
+
+            background: #fffdf0;
+        }
+
+
+        .search-box input:focus {
+
+            border-color: #e09f3e;
+
+            box-shadow:
+                    0 0 0 3px rgba(224,159,62,.15);
+        }
+
+
+        .search-icon {
+
+            position: absolute;
+
+            right: 14px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: #9e2a2b;
+        }
+
+
+        .filter {
+
+            border: 1px solid #eadfa4;
+
+            background: #fffdf0;
+
+            border-radius: 10px;
+
+            padding: 10px 15px;
+
+            color: #540b0e;
+
+            outline: none;
+
+            cursor: pointer;
+        }
+
+
+        /* =====================================
+           TABLE
+        ===================================== */
+
+        .table-wrapper {
+
+            overflow-x: auto;
+        }
+
+
+        table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            min-width: 750px;
+        }
+
+
+        thead {
+
+            background: #fff9d5;
+        }
+
+
+        th {
+
+            text-align: right;
+
+            padding: 14px;
+
+            font-size: 12px;
+
+            color: #335c67;
+
+            font-weight: bold;
+        }
+
+
+        td {
+
+            padding: 14px;
+
+            border-bottom:
+                    1px solid rgba(84,11,14,.07);
+
+            font-size: 13px;
+
+            color: #540b0e;
+        }
+
+
+        tbody tr {
+
+            transition: .2s;
+        }
+
+
+        tbody tr:hover {
+
+            background: #fffdf0;
+        }
+
+
+        /* =====================================
+           BLOG INFO
+        ===================================== */
+
+        .blog-info {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+        }
+
+
+        .blog-thumb {
+
+            width: 55px;
+            height: 65px;
+
+            border-radius: 9px;
+
+            overflow: hidden;
+
+            background: #335c67;
+
+            flex-shrink: 0;
+        }
+
+
+        .blog-thumb img {
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+
+        .blog-name strong {
+
+            display: block;
+
+            font-size: 13px;
+
+            margin-bottom: 2px;
+        }
+
+
+        .blog-name span {
+
+            color: #335c67;
+
+            font-size: 10px;
+        }
+
+
+        /* =====================================
+           STATUS
+        ===================================== */
+
+        .status {
+
+            display: inline-block;
+
+            padding: 4px 10px;
+
+            border-radius: 50px;
+
+            font-size: 10px;
+
+            font-weight: bold;
+        }
+
+
+        .status.published {
+
+            background: #e5eee5;
+
+            color: #335c67;
+        }
+
+
+        .status.draft {
+
+            background: #f5dddd;
+
+            color: #9e2a2b;
+        }
+
+
+        /* =====================================
+           ACTIONS
+        ===================================== */
+
+        .actions {
+
+            display: flex;
+
+            gap: 6px;
+        }
+
+
+        .action-btn {
+
+            width: 34px;
+            height: 34px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            transition: .25s;
+        }
+
+
+        .action-view {
+
+            background: #dce9eb;
+
+            color: #335c67;
+        }
+
+
+        .action-edit {
+
+            background: #fff3b0;
+
+            color: #9e2a2b;
+        }
+
+
+        .action-delete {
+
+            background: #f7dede;
+
+            color: #9e2a2b;
+        }
+
+
+        .action-btn:hover {
+
+            transform: translateY(-2px);
+
+            filter: brightness(.95);
+        }
+
+
+        /* =====================================
+           PAGINATION
+        ===================================== */
+
+        .pagination {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 7px;
+
+            margin-top: 25px;
+        }
+
+
+        .page {
+
+            width: 35px;
+            height: 35px;
+
+            border-radius: 8px;
+
+            border: 1px solid #eadfa4;
+
+            background: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            cursor: pointer;
+
+            color: #540b0e;
+
+            font-size: 12px;
+        }
+
+
+        .page.active {
+
+            background: #9e2a2b;
+
+            color: #fff3b0;
+
+            border-color: #9e2a2b;
+        }
+
+
+        /* =====================================
+           MODAL
+        ===================================== */
+
+        .modal {
+
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(84,11,14,.65);
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            z-index: 2000;
+
+            backdrop-filter: blur(4px);
+        }
+
+
+        .modal.active {
+
+            display: flex;
+        }
+
+
+        .modal-content {
+
+            width: min(700px, 100%);
+
+            max-height: 90vh;
+
+            overflow-y: auto;
+
+            background: white;
+
+            border-radius: 22px;
+
+            padding: 30px;
+
+            box-shadow:
+                    0 25px 70px rgba(0,0,0,.25);
+
+            animation:
+                    modalOpen .25s ease;
+        }
+
+
+        @keyframes modalOpen {
+
+            from {
+
+                opacity: 0;
+
+                transform: translateY(20px) scale(.98);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform: translateY(0) scale(1);
+
+            }
+
+        }
+
+
+        .modal-header {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 25px;
+        }
+
+
+        .modal-header h2 {
+
+            color: #540b0e;
+
+            font-size: 22px;
+        }
+
+
+        .close-modal {
+
+            width: 35px;
+            height: 35px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: #fff3b0;
+
+            color: #9e2a2b;
+
+            cursor: pointer;
+
+            font-size: 18px;
+        }
+
+
+        /* =====================================
+           FORM
+        ===================================== */
+
+        .form-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 18px;
+        }
+
+
+        .form-group {
+
+            margin-bottom: 17px;
+        }
+
+
+        .form-group.full {
+
+            grid-column: 1 / -1;
+        }
+
+
+        .form-group label {
+
+            display: block;
+
+            color: #540b0e;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            margin-bottom: 7px;
+        }
+
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+
+            width: 100%;
+
+            border: 1px solid #eadfa4;
+
+            background: #fffdf0;
+
+            color: #540b0e;
+
+            border-radius: 9px;
+
+            padding: 11px 13px;
+
+            outline: none;
+
+            font-size: 13px;
+        }
+
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+
+            border-color: #e09f3e;
+
+            box-shadow:
+                    0 0 0 3px rgba(224,159,62,.12);
+        }
+
+
+        .form-group textarea {
+
+            min-height: 150px;
+
+            resize: vertical;
+        }
+
+
+        /* =====================================
+           IMAGE UPLOAD
+        ===================================== */
+
+        .image-upload {
+
+            border: 2px dashed #e09f3e;
+
+            border-radius: 12px;
+
+            padding: 25px;
+
+            text-align: center;
+
+            background: #fffdf0;
+
+            cursor: pointer;
+        }
+
+
+        .image-upload-icon {
+
+            font-size: 30px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .image-upload p {
+
+            color: #335c67;
+
+            font-size: 12px;
+        }
+
+
+        .image-upload span {
+
+            color: #9e2a2b;
+
+            font-size: 11px;
+        }
+
+
+        /* =====================================
+           FORM BUTTONS
+        ===================================== */
+
+        .modal-actions {
+
+            display: flex;
+
+            justify-content: flex-start;
+
+            gap: 10px;
+
+            margin-top: 10px;
+
+            padding-top: 20px;
+
+            border-top:
+                    1px solid rgba(84,11,14,.08);
+        }
+
+
+        .save-btn {
+
+            border: none;
+
+            background: #9e2a2b;
+
+            color: #fff3b0;
+
+            padding: 11px 25px;
+
+            border-radius: 9px;
+
+            cursor: pointer;
+
+            font-size: 13px;
+        }
+
+
+        .cancel-btn {
+
+            border: none;
+
+            background: #fff3b0;
+
+            color: #540b0e;
+
+            padding: 11px 20px;
+
+            border-radius: 9px;
+
+            cursor: pointer;
+
+            font-size: 13px;
+        }
+
+
+        /* =====================================
+           RESPONSIVE
+        ===================================== */
+
+        @media(max-width: 1100px) {
+
+            .stats {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+        }
+
+
+        @media(max-width: 850px) {
+
+            .sidebar {
+
+                width: 75px;
+
+                padding: 20px 10px;
+            }
+
+
+            .logo-text,
+            .menu-title,
+            .sidebar-menu a span,
+            .profile-info {
+
+                display: none;
+            }
+
+
+            .admin-logo {
+
+                justify-content: center;
+
+                margin-bottom: 35px;
+            }
+
+
+            .sidebar-menu a {
+
+                justify-content: center;
+
+                padding: 13px;
+            }
+
+
+            .admin-profile {
+
+                justify-content: center;
+
+                padding: 10px;
+            }
+
+
+            .main {
+
+                margin-right: 75px;
+
+                width: calc(100% - 75px);
+            }
+
+
+            .content {
+
+                padding: 25px;
+            }
+
+
+            .welcome {
+
+                padding: 25px;
+            }
+        }
+
+
+        @media(max-width: 650px) {
+
+            .topbar {
+
+                padding: 0 18px;
+            }
+
+
+            .page-title span {
+
+                display: none;
+            }
+
+
+            .view-site {
+
+                display: none;
+            }
+
+
+            .content {
+
+                padding: 18px;
+            }
+
+
+            .stats {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .welcome {
+
+                padding: 22px;
+
+                text-align: center;
+
+                justify-content: center;
+            }
+
+
+            .welcome-decoration {
+
+                display: none;
+            }
+
+
+            .section-header {
+
+                align-items: flex-start;
+
+                gap: 12px;
+
+                flex-direction: column;
+            }
+
+
+            .toolbar {
+
+                flex-direction: column;
+            }
+
+
+            .search-box {
+
+                max-width: none;
+            }
+
+
+            .management-box {
+
+                padding: 15px;
+            }
+
+
+            .form-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .form-group.full {
+
+                grid-column: auto;
+            }
+
+
+            .modal-content {
+
+                padding: 22px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="dashboard">
+
+
+    <!-- =================================
+         SIDEBAR
+    ================================== -->
+
+    <aside class="sidebar">
+
+
+        <div class="admin-logo">
+
+            <div class="logo-icon">
+                📖
+            </div>
+
+            <div class="logo-text">
+
+                <strong>
+                    کتاب‌خانه
+                </strong>
+
+                <span>
+                    پنل مدیریت
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="menu-title">
+            منوی اصلی
+        </div>
+
+
+        <ul class="sidebar-menu">
+
+
+            <li>
+
+                <a href="#" class="active">
+
+                    <span class="menu-icon">
+                        📝
+                    </span>
+
+                    <span>
+                        مدیریت وبلاگ‌ها
+                    </span>
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="#">
+
+                    <span class="menu-icon">
+                        💬
+                    </span>
+
+                    <span>
+                        مدیریت کامنت‌ها
+                    </span>
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="#">
+
+                    <span class="menu-icon">
+                        👥
+                    </span>
+
+                    <span>
+                        کاربران
+                    </span>
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="#">
+
+                    <span class="menu-icon">
+                        📊
+                    </span>
+
+                    <span>
+                        آمار سایت
+                    </span>
+
+                </a>
+
+            </li>
+
+
+        </ul>
+
+
+        <div class="menu-title"
+             style="margin-top:30px;">
+
+            سایر
+
+        </div>
+
+
+        <ul class="sidebar-menu">
+
+
+            <li>
+
+                <a href="#">
+
+                    <span class="menu-icon">
+                        ⚙
+                    </span>
+
+                    <span>
+                        تنظیمات
+                    </span>
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="#">
+
+                    <span class="menu-icon">
+                        🚪
+                    </span>
+
+                    <span>
+                        خروج
+                    </span>
+
+                </a>
+
+            </li>
+
+
+        </ul>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="admin-profile">
+
+                <div class="profile-avatar">
+                    ا
+                </div>
+
+                <div class="profile-info">
+
+                    <strong>
+                        مدیر سایت
+                    </strong>
+
+                    <span>
+                        Administrator
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </aside>
+
+
+    <!-- =================================
+         MAIN
+    ================================== -->
+
+    <main class="main">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+
+            <div class="page-title">
+
+                <h1>
+                    مدیریت وبلاگ‌ها
+                </h1>
+
+                <span>
+                    مدیریت، ویرایش و انتشار نوشته‌ها
+                </span>
+
+            </div>
+
+
+            <div class="top-actions">
+
+                <div class="notification">
+                    🔔
+                </div>
+
+                <a href="#" class="view-site">
+                    مشاهده سایت ↗
+                </a>
+
+            </div>
+
+
+        </header>
+
+
+        <!-- CONTENT -->
+
+        <div class="content">
+
+
+            <!-- WELCOME -->
+
+            <section class="welcome">
+
+                <div>
+
+                    <h2>
+                        سلام، مدیر عزیز 👋
+                    </h2>
+
+                    <p>
+                        امروز چه داستانی را با خوانندگان
+                        کتاب‌خانه به اشتراک می‌گذاری؟
+                    </p>
+
+                </div>
+
+                <div class="welcome-decoration">
+                    📚
+                </div>
+
+            </section>
+
+
+            <!-- STATISTICS -->
+
+            <section class="stats">
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blog">
+                        📝
+                    </div>
+
+                    <div class="stat-info">
+
+                        <span>
+                            کل وبلاگ‌ها
+                        </span>
+
+                        <strong>
+                            ۲۴
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon published">
+                        ✓
+                    </div>
+
+                    <div class="stat-info">
+
+                        <span>
+                            منتشر شده
+                        </span>
+
+                        <strong>
+                            ۲۰
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon draft">
+                        ✎
+                    </div>
+
+                    <div class="stat-info">
+
+                        <span>
+                            پیش‌نویس
+                        </span>
+
+                        <strong>
+                            ۴
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon views">
+                        👁
+                    </div>
+
+                    <div class="stat-info">
+
+                        <span>
+                            مجموع بازدید
+                        </span>
+
+                        <strong>
+                            ۱۲.۸K
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+            <!-- MANAGEMENT -->
+
+            <section>
+
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>
+                            وبلاگ‌های سایت
+                        </h2>
+
+                    </div>
+
+
+                    <button
+                            class="add-btn"
+                            onclick="openAddModal()">
+
+                        + افزودن وبلاگ
+
+                    </button>
+
+                </div>
+
+
+                <div class="management-box">
+
+
+                    <!-- TOOLBAR -->
+
+                    <div class="toolbar">
+
+
+                        <div class="search-box">
+
+                            <span class="search-icon">
+                                🔍
+                            </span>
+
+                            <input
+                                    type="text"
+                                    placeholder="جست‌وجوی عنوان وبلاگ..."
+                                    id="searchInput">
+
+                        </div>
+
+
+                        <select class="filter">
+
+                            <option>
+                                همه وضعیت‌ها
+                            </option>
+
+                            <option>
+                                منتشر شده
+                            </option>
+
+                            <option>
+                                پیش‌نویس
+                            </option>
+
+                        </select>
+
+
+                    </div>
+
+
+                    <!-- TABLE -->
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+
+                            <tr>
+
+                                <th>
+                                    وبلاگ
+                                </th>
+
+                                <th>
+                                    دسته‌بندی
+                                </th>
+
+                                <th>
+                                    نویسنده
+                                </th>
+
+                                <th>
+                                    تاریخ
+                                </th>
+
+                                <th>
+                                    وضعیت
+                                </th>
+
+                                <th>
+                                    بازدید
+                                </th>
+
+                                <th>
+                                    عملیات
+                                </th>
+
+                            </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+
+                            <!-- BLOG 1 -->
+
+                            <tr>
+
+                                <td>
+
+                                    <div class="blog-info">
+
+                                        <div class="blog-thumb">
+
+                                            <img
+                                                    src="images/book1.jpg"
+                                                    alt="کتاب">
+
+                                        </div>
+
+                                        <div class="blog-name">
+
+                                            <strong>
+                                                صد سال تنهایی
+                                            </strong>
+
+                                            <span>
+                                                یک سفر متفاوت...
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+                                    رمان
+                                </td>
+
+
+                                <td>
+                                    علی رضایی
+                                </td>
+
+
+                                <td>
+                                    ۱۲ مرداد ۱۴۰۵
+                                </td>
+
+
+                                <td>
+
+                                    <span class="status published">
+                                        منتشر شده
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+                                    ۲۴۸
+                                </td>
+
+
+                                <td>
+
+                                    <div class="actions">
+
+                                        <button
+                                                class="action-btn action-view"
+                                                title="مشاهده">
+
+                                            👁
+
+                                        </button>
+
+
+                                        <button
+                                                class="action-btn action-edit"
+                                                title="ویرایش"
+                                                onclick="openEditModal()">
+
+                                            ✎
+
+                                        </button>
+
+
+                                        <button
+                                                class="action-btn action-delete"
+                                                title="حذف"
+                                                onclick="deleteBlog()">
+
+                                            🗑
+
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- BLOG 2 -->
+
+                            <tr>
+
+                                <td>
+
+                                    <div class="blog-info">
+
+                                        <div class="blog-thumb">
+
+                                            <img
+                                                    src="images/book2.jpg"
+                                                    alt="کتاب">
+
+                                        </div>
+
+                                        <div class="blog-name">
+
+                                            <strong>
+                                                شازده کوچولو
+                                            </strong>
+
+                                            <span>
+                                                داستانی برای همه...
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+                                    ادبیات
+                                </td>
+
+
+                                <td>
+                                    سارا احمدی
+                                </td>
+
+
+                                <td>
+                                    ۱۰ مرداد ۱۴۰۵
+                                </td>
+
+
+                                <td>
+
+                                    <span class="status published">
+                                        منتشر شده
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+                                    ۵۱۲
+                                </td>
+
+
+                                <td>
+
+                                    <div class="actions">
+
+                                        <button
+                                                class="action-btn action-view">
+                                            👁
+                                        </button>
+
+                                        <button
+                                                class="action-btn action-edit"
+                                                onclick="openEditModal()">
+                                            ✎
+                                        </button>
+
+                                        <button
+                                                class="action-btn action-delete"
+                                                onclick="deleteBlog()">
+                                            🗑
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- BLOG 3 -->
+
+                            <tr>
+
+                                <td>
+
+                                    <div class="blog-info">
+
+                                        <div class="blog-thumb">
+
+                                            <img
+                                                    src="images/book3.jpg"
+                                                    alt="کتاب">
+
+                                        </div>
+
+                                        <div class="blog-name">
+
+                                            <strong>
+                                                جنایت و مکافات
+                                            </strong>
+
+                                            <span>
+                                                نگاهی به یک شاهکار...
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+                                    کلاسیک
+                                </td>
+
+
+                                <td>
+                                    محمد کریمی
+                                </td>
+
+
+                                <td>
+                                    ۸ مرداد ۱۴۰۵
+                                </td>
+
+
+                                <td>
+
+                                    <span class="status draft">
+                                        پیش‌نویس
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+                                    ۰
+                                </td>
+
+
+                                <td>
+
+                                    <div class="actions">
+
+                                        <button
+                                                class="action-btn action-view">
+                                            👁
+                                        </button>
+
+                                        <button
+                                                class="action-btn action-edit"
+                                                onclick="openEditModal()">
+                                            ✎
+                                        </button>
+
+                                        <button
+                                                class="action-btn action-delete"
+                                                onclick="deleteBlog()">
+                                            🗑
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- BLOG 4 -->
+
+                            <tr>
+
+                                <td>
+
+                                    <div class="blog-info">
+
+                                        <div class="blog-thumb">
+
+                                            <img
+                                                    src="images/book4.jpg"
+                                                    alt="کتاب">
+
+                                        </div>
+
+                                        <div class="blog-name">
+
+                                            <strong>
+                                                کتابخانه نیمه‌شب
+                                            </strong>
+
+                                            <span>
+                                                میان زندگی‌های ممکن...
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+                                    روانشناسی
+                                </td>
+
+
+                                <td>
+                                    نازنین مرادی
+                                </td>
+
+
+                                <td>
+                                    ۵ مرداد ۱۴۰۵
+                                </td>
+
+
+                                <td>
+
+                                    <span class="status published">
+                                        منتشر شده
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+                                    ۸۷۶
+                                </td>
+
+
+                                <td>
+
+                                    <div class="actions">
+
+                                        <button
+                                                class="action-btn action-view">
+                                            👁
+                                        </button>
+
+                                        <button
+                                                class="action-btn action-edit"
+                                                onclick="openEditModal()">
+                                            ✎
+                                        </button>
+
+                                        <button
+                                                class="action-btn action-delete"
+                                                onclick="deleteBlog()">
+                                            🗑
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+
+                    <!-- PAGINATION -->
+
+                    <div class="pagination">
+
+                        <div class="page">
+                            ‹
+                        </div>
+
+                        <div class="page active">
+                            ۱
+                        </div>
+
+                        <div class="page">
+                            ۲
+                        </div>
+
+                        <div class="page">
+                            ۳
+                        </div>
+
+                        <div class="page">
+                            ۴
+                        </div>
+
+                        <div class="page">
+                            ›
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- =================================
+     ADD / EDIT MODAL
+================================== -->
+
+<div class="modal" id="blogModal">
+
+
+    <div class="modal-content">
+
+
+        <div class="modal-header">
+
+            <h2 id="modalTitle">
+                افزودن وبلاگ جدید
+            </h2>
+
+            <button
+                    class="close-modal"
+                    onclick="closeModal()">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <form>
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group">
+
+                    <label>
+                        عنوان وبلاگ
+                    </label>
+
+                    <input
+                            type="text"
+                            placeholder="مثلاً: صد سال تنهایی">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        دسته‌بندی
+                    </label>
+
+                    <select>
+
+                        <option>
+                            انتخاب دسته‌بندی
+                        </option>
+
+                        <option>
+                            رمان
+                        </option>
+
+                        <option>
+                            ادبیات
+                        </option>
+
+                        <option>
+                            کلاسیک
+                        </option>
+
+                        <option>
+                            روانشناسی
+                        </option>
+
+                        <option>
+                            علمی
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label>
+                        تصویر وبلاگ
+                    </label>
+
+                    <div class="image-upload">
+
+                        <div class="image-upload-icon">
+                            📷
+                        </div>
+
+                        <p>
+                            تصویر را اینجا بکشید یا انتخاب کنید
+                        </p>
+
+                        <span>
+                            JPG / PNG — حداکثر ۵ مگابایت
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label>
+                        خلاصه وبلاگ
+                    </label>
+
+                    <textarea
+                            placeholder="خلاصه‌ای کوتاه درباره این مقاله...">
+                    </textarea>
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label>
+                        متن وبلاگ
+                    </label>
+
+                    <textarea
+                            style="min-height:220px;"
+                            placeholder="متن کامل وبلاگ را بنویسید...">
+                    </textarea>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        وضعیت
+                    </label>
+
+                    <select>
+
+                        <option>
+                            منتشر شده
+                        </option>
+
+                        <option>
+                            پیش‌نویس
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        نویسنده
+                    </label>
+
+                    <input
+                            type="text"
+                            placeholder="نام نویسنده">
+
+                </div>
+
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                        type="button"
+                        class="save-btn">
+
+                    ذخیره وبلاگ
+
+                </button>
+
+
+                <button
+                        type="button"
+                        class="cancel-btn"
+                        onclick="closeModal()">
+
+                    انصراف
+
+                </button>
+
+            </div>
+
+
+        </form>
+
+
+    </div>
+
+</div>
+
+
+<script>
+
+
+    /* =========================
+       MODAL
+    ========================= */
+
+    const modal =
+        document.getElementById("blogModal");
+
+    const modalTitle =
+        document.getElementById("modalTitle");
+
+
+    function openAddModal() {
+
+        modalTitle.innerText =
+            "افزودن وبلاگ جدید";
+
+        modal.classList.add("active");
+    }
+
+
+    function openEditModal() {
+
+        modalTitle.innerText =
+            "ویرایش وبلاگ";
+
+        modal.classList.add("active");
+    }
+
+
+    function closeModal() {
+
+        modal.classList.remove("active");
+    }
+
+
+    /* =========================
+       CLOSE WHEN CLICK OUTSIDE
+    ========================= */
+
+    modal.addEventListener(
+        "click",
+        function(event) {
+
+            if (event.target === modal) {
+
+                closeModal();
+
+            }
+
+        }
+    );
+
+
+    /* =========================
+       DELETE
+    ========================= */
+
+    function deleteBlog() {
+
+        const result =
+            confirm(
+                "آیا مطمئن هستید که می‌خواهید این وبلاگ را حذف کنید؟"
+            );
+
+        if (result) {
+
+            alert(
+                "وبلاگ با موفقیت حذف شد."
+            );
+
+        }
+
+    }
+
+
+    /* =========================
+       SEARCH
+    ========================= */
+
+    const searchInput =
+        document.getElementById("searchInput");
+
+
+    searchInput.addEventListener(
+        "input",
+        function() {
+
+            const value =
+                this.value.toLowerCase();
+
+            const rows =
+                document.querySelectorAll(
+                    "tbody tr"
+                );
+
+
+            rows.forEach(
+                function(row) {
+
+                    const text =
+                        row.innerText.toLowerCase();
+
+                    row.style.display =
+                        text.includes(value)
+                            ? ""
+                            : "none";
+
+                }
+            );
+
+        }
+    );
+
+
+</script>
+
+
+</body>
+
+</html>
