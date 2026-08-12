@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>کتاب‌خانه | وبلاگ کتاب</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            background-color: #fff3b0;
+            color: #540b0e;
+            line-height: 1.8;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: min(1180px, 90%);
+            margin: auto;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            background: #540b0e;
+            color: #fff3b0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(84, 11, 14, 0.25);
+        }
+
+        .nav-content {
+            min-height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 23px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: #e09f3e;
+            color: #540b0e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 23px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff3b0;
+            transition: 0.3s;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            color: #e09f3e;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 14px;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #e09f3e;
+            color: #540b0e;
+            font-weight: bold;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(224, 159, 62, 0.3);
+        }
+
+        .btn-outline {
+            border: 1px solid #e09f3e;
+            color: #e09f3e;
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: #e09f3e;
+            color: #540b0e;
+        }
+
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 580px;
+            background:
+                    radial-gradient(circle at 10% 20%, rgba(224, 159, 62, 0.2), transparent 25%),
+                    linear-gradient(135deg, #540b0e 0%, #9e2a2b 100%);
+            color: #fff3b0;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(38px, 5vw, 65px);
+            line-height: 1.25;
+            margin-bottom: 22px;
+        }
+
+        .hero-text h1 span {
+            color: #e09f3e;
+        }
+
+        .hero-text p {
+            max-width: 620px;
+            color: #ffeeb0;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .hero-book {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .book {
+            width: 230px;
+            height: 320px;
+            background: #e09f3e;
+            border-radius: 8px 18px 18px 8px;
+            box-shadow:
+                    20px 20px 0 rgba(51, 92, 103, 0.5),
+                    0 25px 45px rgba(0, 0, 0, 0.3);
+            transform: rotate(-7deg);
+            padding: 35px 25px;
+            position: relative;
+        }
+
+        .book::before {
+            content: "";
+            position: absolute;
+            right: 18px;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: rgba(84, 11, 14, 0.25);
+        }
+
+        .book-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #540b0e;
+            margin-top: 35px;
+        }
+
+        .book-subtitle {
+            color: #9e2a2b;
+            margin-top: 12px;
+        }
+
+
+        /* ================= SECTION ================= */
+
+        section {
+            padding: 90px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header .small-title {
+            color: #9e2a2b;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .section-header h2 {
+            font-size: 35px;
+            color: #540b0e;
+        }
+
+        .section-header p {
+            max-width: 650px;
+            margin: 10px auto 0;
+            color: #335c67;
+        }
+
+
+        /* ================= BLOG CARDS ================= */
+
+        .blogs {
+            background: #fff3b0;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .blog-card {
+            background: #fff;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid rgba(84, 11, 14, 0.08);
+            box-shadow: 0 10px 30px rgba(84, 11, 14, 0.08);
+            transition: 0.3s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 35px rgba(84, 11, 14, 0.15);
+        }
+
+        .blog-image {
+            height: 220px;
+            background: #335c67;
+            overflow: hidden;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+
+        .blog-card:hover .blog-image img {
+            transform: scale(1.05);
+        }
+
+        .blog-info {
+            padding: 24px;
+        }
+
+        .blog-category {
+            color: #9e2a2b;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .blog-info h3 {
+            font-size: 21px;
+            margin: 8px 0 10px;
+            color: #540b0e;
+        }
+
+        .blog-info p {
+            color: #335c67;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .read-more {
+            color: #9e2a2b;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .read-more:hover {
+            color: #e09f3e;
+        }
+
+
+        /* ================= ABOUT ================= */
+
+        .about {
+            background: #335c67;
+            color: #fff3b0;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about h2 {
+            font-size: 38px;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            color: #e9df9d;
+            line-height: 2;
+        }
+
+        .about-boxes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .about-box {
+            background: rgba(255, 243, 176, 0.08);
+            border: 1px solid rgba(255, 243, 176, 0.15);
+            padding: 25px;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .about-box strong {
+            display: block;
+            color: #e09f3e;
+            font-size: 30px;
+        }
+
+
+        /* ================= CTA ================= */
+
+        .cta {
+            padding: 70px 0;
+            background: #9e2a2b;
+            color: #fff3b0;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 35px;
+            margin-bottom: 12px;
+        }
+
+        .cta p {
+            margin-bottom: 25px;
+            color: #ffeeb0;
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #540b0e;
+            color: #fff3b0;
+            padding: 55px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .footer-description {
+            color: #dfcfa0;
+            max-width: 400px;
+        }
+
+        footer h4 {
+            color: #e09f3e;
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+
+        .footer-links a {
+            color: #dfcfa0;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #e09f3e;
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255, 243, 176, 0.12);
+            padding-top: 20px;
+            text-align: center;
+            color: #c9b98b;
+            font-size: 13px;
+        }
+
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 900px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 70px 0;
+            }
+
+            .hero-text p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            .nav-content {
+                min-height: 65px;
+            }
+
+            .logo {
+                font-size: 18px;
+            }
+
+            .logo-icon {
+                width: 36px;
+                height: 36px;
+            }
+
+            .nav-buttons .btn-outline {
+                display: none;
+            }
+
+            .hero {
+                min-height: auto;
+            }
+
+            .hero-text h1 {
+                font-size: 38px;
+            }
+
+            .hero-text p {
+                font-size: 15px;
+            }
+
+            .book {
+                width: 180px;
+                height: 260px;
+            }
+
+            section {
+                padding: 65px 0;
+            }
+
+            .section-header h2 {
+                font-size: 28px;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-boxes {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .cta h2 {
+                font-size: 28px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="container nav-content">
+
+        <a href="#" class="logo">
+            <span class="logo-icon">📖</span>
+            کتاب‌خانه
+        </a>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="#">خانه</a>
+            </li>
+
+            <li>
+                <a href="#blogs">وبلاگ‌ها</a>
+            </li>
+
+            <li>
+                <a href="#about">درباره ما</a>
+            </li>
+
+        </ul>
+
+        <div class="nav-buttons">
+
+            <a href="#" class="btn btn-outline">
+                ورود
+            </a>
+
+            <a href="#" class="btn btn-primary">
+                ثبت‌نام
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<main>
+
+    <section class="hero">
+
+        <div class="container hero-content">
+
+            <div class="hero-text">
+
+                <h1>
+                    هر کتاب،
+                    <br>
+                    <span>یک داستان تازه</span>
+                </h1>
+
+                <p>
+                    جایی برای کشف کتاب‌های جدید، خواندن درباره
+                    داستان‌ها و آشنایی با دنیای بی‌پایان کتاب‌ها.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#blogs" class="btn btn-primary">
+                        کشف نوشته‌ها
+                    </a>
+
+                    <a href="#about" class="btn btn-outline">
+                        بیشتر بدانید
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-book">
+
+                <div class="book">
+
+                    <div class="book-title">
+                        دنیای
+                        <br>
+                        کتاب‌ها
+                    </div>
+
+                    <div class="book-subtitle">
+                        بخوان، کشف کن، تجربه کن.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= BLOGS ================= -->
+
+    <section class="blogs" id="blogs">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <div class="small-title">
+                    آخرین نوشته‌ها
+                </div>
+
+                <h2>
+                    از دنیای کتاب‌ها بخوانید
+                </h2>
+
+                <p>
+                    نوشته‌هایی درباره کتاب‌های مختلف که می‌توانند
+                    شما را با داستان‌ها و جهان‌های تازه آشنا کنند.
+                </p>
+
+            </div>
+
+
+            <div class="blog-grid">
+
+
+                <!-- BLOG 1 -->
+
+                <article class="blog-card">
+
+                    <div class="blog-image">
+
+                        <img
+                                src="images/book1.jpg"
+                                alt="تصویر کتاب"
+                        >
+
+                    </div>
+
+                    <div class="blog-info">
+
+                    <span class="blog-category">
+                        رمان
+                    </span>
+
+                        <h3>
+                            کتابی که باید یک بار خواند
+                        </h3>
+
+                        <p>
+                            نگاهی کوتاه به داستان و ویژگی‌های
+                            یکی از کتاب‌های محبوب و تأثیرگذار.
+                        </p>
+
+                        <a href="#" class="read-more">
+                            ادامه مطلب ←
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- BLOG 2 -->
+
+                <article class="blog-card">
+
+                    <div class="blog-image">
+
+                        <img
+                                src="images/book2.jpg"
+                                alt="تصویر کتاب"
+                        >
+
+                    </div>
+
+                    <div class="blog-info">
+
+                    <span class="blog-category">
+                        ادبیات
+                    </span>
+
+                        <h3>
+                            داستان‌هایی فراتر از کلمات
+                        </h3>
+
+                        <p>
+                            با داستانی آشنا شوید که شخصیت‌ها و
+                            فضای آن مدت‌ها در ذهن شما باقی می‌ماند.
+                        </p>
+
+                        <a href="#" class="read-more">
+                            ادامه مطلب ←
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- BLOG 3 -->
+
+                <article class="blog-card">
+
+                    <div class="blog-image">
+
+                        <img
+                                src="images/book3.jpg"
+                                alt="تصویر کتاب"
+                        >
+
+                    </div>
+
+                    <div class="blog-info">
+
+                    <span class="blog-category">
+                        معرفی کتاب
+                    </span>
+
+                        <h3>
+                            سفری به یک دنیای ناشناخته
+                        </h3>
+
+                        <p>
+                            معرفی کتابی متفاوت برای کسانی که
+                            به دنبال تجربه‌ای تازه هستند.
+                        </p>
+
+                        <a href="#" class="read-more">
+                            ادامه مطلب ←
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ABOUT ================= -->
+
+    <section class="about" id="about">
+
+        <div class="container about-content">
+
+            <div>
+
+                <h2>
+                    درباره کتاب‌خانه
+                </h2>
+
+                <p>
+                    کتاب‌خانه فضایی برای دوستداران کتاب است؛
+                    جایی که کاربران می‌توانند درباره کتاب‌هایی
+                    که خوانده‌اند بنویسند و تجربه و دیدگاه خود
+                    را با دیگران به اشتراک بگذارند.
+                </p>
+
+                <br>
+
+                <p>
+                    هدف ما این است که پیدا کردن یک کتاب خوب
+                    را ساده‌تر کنیم و فرصتی برای آشنایی با
+                    داستان‌ها و نویسندگان مختلف فراهم کنیم.
+                </p>
+
+            </div>
+
+
+            <div class="about-boxes">
+
+                <div class="about-box">
+
+                    <strong>+</strong>
+
+                    <span>
+                    نوشته‌های متنوع
+                </span>
+
+                </div>
+
+                <div class="about-box">
+
+                    <strong>📚</strong>
+
+                    <span>
+                    دنیایی از کتاب‌ها
+                </span>
+
+                </div>
+
+                <div class="about-box">
+
+                    <strong>✍</strong>
+
+                    <span>
+                    اشتراک‌گذاری تجربه
+                </span>
+
+                </div>
+
+                <div class="about-box">
+
+                    <strong>♥</strong>
+
+                    <span>
+                    برای کتاب‌دوستان
+                </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CTA ================= -->
+
+    <section class="cta">
+
+        <div class="container">
+
+            <h2>
+                آماده‌ای کتاب بعدی‌ات را پیدا کنی؟
+            </h2>
+
+            <p>
+                نوشته‌های مختلف را بخوان و شاید کتاب مورد علاقه‌ات
+                همین‌جا منتظرت باشد.
+            </p>
+
+            <a href="#blogs" class="btn btn-primary">
+                مشاهده وبلاگ‌ها
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-content">
+
+            <div>
+
+                <div class="footer-logo">
+                    📖 کتاب‌خانه
+                </div>
+
+                <p class="footer-description">
+                    جایی برای خواندن، نوشتن و کشف کردن
+                    دنیای بی‌پایان کتاب‌ها.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    دسترسی سریع
+                </h4>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="#">
+                            صفحه اصلی
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#blogs">
+                            وبلاگ‌ها
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#about">
+                            درباره ما
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    حساب کاربری
+                </h4>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="#">
+                            ورود
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            ثبت‌نام
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+
+            © ۱۴۰۵ کتاب‌خانه — تمامی حقوق محفوظ است.
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+</body>
+
+</html>
