@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>نمایش مقاله | کتاب‌خانه</title>
+
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            background: #fff3b0;
+            color: #540b0e;
+            line-height: 2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: min(1100px, 90%);
+            margin: auto;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            background: #540b0e;
+            color: #fff3b0;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 1000;
+
+            box-shadow:
+                    0 5px 25px rgba(84, 11, 14, .25);
+        }
+
+        .nav-content {
+            min-height: 75px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 25px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+
+            background: #e09f3e;
+            color: #540b0e;
+
+            border-radius: 12px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 22px;
+        }
+
+        .nav-links {
+            list-style: none;
+
+            display: flex;
+
+            gap: 28px;
+        }
+
+        .nav-links a {
+            color: #fff3b0;
+
+            font-size: 14px;
+
+            transition: .3s;
+        }
+
+        .nav-links a:hover {
+            color: #e09f3e;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+
+            padding: 9px 20px;
+
+            border-radius: 10px;
+
+            font-size: 14px;
+
+            transition: .3s;
+        }
+
+        .btn-primary {
+            background: #e09f3e;
+            color: #540b0e;
+
+            font-weight: bold;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                    0 8px 20px rgba(224, 159, 62, .3);
+        }
+
+        .btn-outline {
+            border: 1px solid #e09f3e;
+            color: #e09f3e;
+        }
+
+        .btn-outline:hover {
+            background: #e09f3e;
+            color: #540b0e;
+        }
+
+
+        /* =========================
+           BREADCRUMB
+        ========================= */
+
+        .breadcrumb {
+            padding: 25px 0 10px;
+
+            color: #335c67;
+
+            font-size: 13px;
+        }
+
+        .breadcrumb span {
+            color: #9e2a2b;
+        }
+
+
+        /* =========================
+           ARTICLE HEADER
+        ========================= */
+
+        .article-header {
+            text-align: center;
+
+            max-width: 850px;
+
+            margin: 30px auto 45px;
+        }
+
+        .category {
+            display: inline-block;
+
+            background: #9e2a2b;
+            color: #fff3b0;
+
+            padding: 6px 18px;
+
+            border-radius: 50px;
+
+            font-size: 13px;
+
+            margin-bottom: 20px;
+        }
+
+        .article-header h1 {
+            font-size: clamp(32px, 5vw, 55px);
+
+            line-height: 1.4;
+
+            color: #540b0e;
+
+            margin-bottom: 20px;
+        }
+
+        .article-header p {
+            color: #335c67;
+
+            font-size: 16px;
+        }
+
+        .article-meta {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 25px;
+
+            flex-wrap: wrap;
+
+            margin-top: 20px;
+
+            color: #335c67;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           COVER IMAGE
+        ========================= */
+
+        .article-cover {
+            width: 100%;
+
+            height: 500px;
+
+            border-radius: 25px;
+
+            overflow: hidden;
+
+            background: #335c67;
+
+            box-shadow:
+                    0 20px 50px rgba(84, 11, 14, .2);
+
+            position: relative;
+        }
+
+        .article-cover img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+        .cover-overlay {
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                    linear-gradient(
+                            to top,
+                            rgba(84, 11, 14, .55),
+                            transparent 55%
+                    );
+        }
+
+
+        /* =========================
+           ARTICLE LAYOUT
+        ========================= */
+
+        .article-layout {
+
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1fr) 250px;
+
+            gap: 50px;
+
+            margin-top: 60px;
+        }
+
+
+        /* =========================
+           ARTICLE CONTENT
+        ========================= */
+
+        .article-content {
+            background: white;
+
+            border-radius: 22px;
+
+            padding: 50px;
+
+            box-shadow:
+                    0 10px 35px rgba(84, 11, 14, .08);
+        }
+
+        .article-content p {
+            color: #335c67;
+
+            font-size: 17px;
+
+            line-height: 2.4;
+
+            margin-bottom: 25px;
+        }
+
+        .article-content h2 {
+            color: #540b0e;
+
+            font-size: 28px;
+
+            margin: 45px 0 20px;
+
+            position: relative;
+        }
+
+        .article-content h2::before {
+            content: "";
+
+            position: absolute;
+
+            right: -18px;
+
+            top: 8px;
+
+            width: 5px;
+
+            height: 30px;
+
+            background: #e09f3e;
+
+            border-radius: 5px;
+        }
+
+
+        /* =========================
+           QUOTE
+        ========================= */
+
+        .quote {
+
+            margin: 40px 0;
+
+            padding: 30px 35px;
+
+            background: #fff3b0;
+
+            border-right: 6px solid #e09f3e;
+
+            border-radius: 15px;
+
+            color: #540b0e;
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            position: relative;
+        }
+
+        .quote::before {
+            content: "“";
+
+            position: absolute;
+
+            left: 20px;
+            top: -20px;
+
+            font-size: 80px;
+
+            color: #e09f3e;
+
+            opacity: .6;
+        }
+
+
+        /* =========================
+           AUTHOR BOX
+        ========================= */
+
+        .author-box {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+
+            margin-top: 50px;
+
+            padding-top: 30px;
+
+            border-top:
+                    1px solid rgba(84, 11, 14, .1);
+        }
+
+        .author-avatar {
+
+            width: 60px;
+            height: 60px;
+
+            border-radius: 50%;
+
+            background: #9e2a2b;
+
+            color: #fff3b0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 25px;
+        }
+
+        .author-info strong {
+            display: block;
+
+            color: #540b0e;
+        }
+
+        .author-info span {
+            color: #335c67;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           SHARE
+        ========================= */
+
+        .share {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            margin-top: 30px;
+        }
+
+        .share-title {
+            color: #540b0e;
+
+            font-weight: bold;
+
+            margin-left: 10px;
+        }
+
+        .share-btn {
+
+            width: 40px;
+            height: 40px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #335c67;
+
+            color: #fff3b0;
+
+            transition: .3s;
+        }
+
+        .share-btn:hover {
+
+            background: #e09f3e;
+
+            color: #540b0e;
+
+            transform: translateY(-3px);
+        }
+
+
+        /* =========================
+           SIDEBAR
+        ========================= */
+
+        .sidebar {
+
+            position: sticky;
+
+            top: 100px;
+
+            height: fit-content;
+        }
+
+        .side-box {
+
+            background: #540b0e;
+
+            color: #fff3b0;
+
+            padding: 25px;
+
+            border-radius: 20px;
+
+            margin-bottom: 20px;
+
+            box-shadow:
+                    0 10px 30px rgba(84, 11, 14, .15);
+        }
+
+        .side-box h3 {
+
+            color: #e09f3e;
+
+            margin-bottom: 15px;
+
+            font-size: 18px;
+        }
+
+        .side-box p {
+
+            color: #eadfa4;
+
+            font-size: 13px;
+
+            line-height: 2;
+        }
+
+        .side-stat {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            padding: 10px 0;
+
+            border-bottom:
+                    1px solid rgba(255,243,176,.12);
+
+            font-size: 13px;
+        }
+
+        .side-stat:last-child {
+            border-bottom: none;
+        }
+
+
+        /* =========================
+           COMMENTS
+        ========================= */
+
+        .comments-section {
+
+            margin-top: 80px;
+        }
+
+        .comments-title {
+
+            font-size: 30px;
+
+            color: #540b0e;
+
+            margin-bottom: 30px;
+        }
+
+        .comment {
+
+            background: white;
+
+            border-radius: 18px;
+
+            padding: 25px;
+
+            margin-bottom: 15px;
+
+            box-shadow:
+                    0 8px 25px rgba(84,11,14,.06);
+        }
+
+        .comment-header {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-bottom: 12px;
+        }
+
+        .comment-avatar {
+
+            width: 45px;
+            height: 45px;
+
+            border-radius: 50%;
+
+            background: #e09f3e;
+
+            color: #540b0e;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-weight: bold;
+        }
+
+        .comment-name {
+            font-weight: bold;
+            color: #540b0e;
+        }
+
+        .comment-date {
+
+            display: block;
+
+            color: #335c67;
+
+            font-size: 11px;
+        }
+
+        .comment p {
+
+            color: #335c67;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           COMMENT FORM
+        ========================= */
+
+        .comment-form {
+
+            background: #335c67;
+
+            color: #fff3b0;
+
+            padding: 35px;
+
+            border-radius: 22px;
+
+            margin-top: 35px;
+        }
+
+        .comment-form h3 {
+
+            color: #e09f3e;
+
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+
+            margin-bottom: 15px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+
+            width: 100%;
+
+            border: none;
+
+            outline: none;
+
+            padding: 14px 16px;
+
+            border-radius: 10px;
+
+            font-family: inherit;
+
+            background: #fff3b0;
+
+            color: #540b0e;
+        }
+
+        .form-group textarea {
+
+            min-height: 130px;
+
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+
+            box-shadow:
+                    0 0 0 3px rgba(224,159,62,.5);
+        }
+
+
+        /* =========================
+           RELATED ARTICLES
+        ========================= */
+
+        .related {
+
+            margin-top: 90px;
+        }
+
+        .related-title {
+
+            text-align: center;
+
+            font-size: 32px;
+
+            color: #540b0e;
+
+            margin-bottom: 35px;
+        }
+
+        .related-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .related-card {
+
+            background: white;
+
+            border-radius: 18px;
+
+            overflow: hidden;
+
+            box-shadow:
+                    0 8px 25px rgba(84,11,14,.07);
+
+            transition: .3s;
+        }
+
+        .related-card:hover {
+
+            transform: translateY(-6px);
+        }
+
+        .related-image {
+
+            height: 180px;
+
+            background: #335c67;
+        }
+
+        .related-image img {
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+        .related-info {
+
+            padding: 20px;
+        }
+
+        .related-info h3 {
+
+            color: #540b0e;
+
+            font-size: 18px;
+
+            margin-bottom: 8px;
+        }
+
+        .related-info a {
+
+            color: #9e2a2b;
+
+            font-size: 13px;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+
+            background: #540b0e;
+
+            color: #fff3b0;
+
+            margin-top: 90px;
+
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+
+            display: grid;
+
+            grid-template-columns:
+                1.5fr 1fr 1fr;
+
+            gap: 40px;
+
+            margin-bottom: 35px;
+        }
+
+        .footer-logo {
+
+            font-size: 23px;
+
+            font-weight: bold;
+
+            margin-bottom: 12px;
+        }
+
+        .footer-description {
+
+            color: #dfcfa0;
+
+            max-width: 400px;
+
+            font-size: 14px;
+        }
+
+        footer h4 {
+
+            color: #e09f3e;
+
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+
+            list-style: none;
+        }
+
+        .footer-links li {
+
+            margin-bottom: 8px;
+        }
+
+        .footer-links a {
+
+            color: #dfcfa0;
+
+            font-size: 13px;
+
+            transition: .3s;
+        }
+
+        .footer-links a:hover {
+
+            color: #e09f3e;
+        }
+
+        .copyright {
+
+            border-top:
+                    1px solid rgba(255,243,176,.12);
+
+            padding-top: 20px;
+
+            text-align: center;
+
+            color: #c9b98b;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media(max-width: 900px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .article-layout {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .sidebar {
+
+                position: static;
+
+            }
+
+            .related-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+            .footer-content {
+
+                grid-template-columns:
+                    1fr 1fr;
+
+            }
+        }
+
+
+        @media(max-width: 600px) {
+
+            .nav-buttons .btn-outline {
+                display: none;
+            }
+
+            .article-header h1 {
+
+                font-size: 32px;
+
+            }
+
+            .article-cover {
+
+                height: 300px;
+
+                border-radius: 18px;
+
+            }
+
+            .article-content {
+
+                padding: 25px 20px;
+
+            }
+
+            .article-content p {
+
+                font-size: 15px;
+
+            }
+
+            .quote {
+
+                padding: 22px;
+
+                font-size: 17px;
+
+            }
+
+            .related-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .footer-content {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .share {
+
+                flex-wrap: wrap;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<header class="navbar">
+
+    <div class="container nav-content">
+
+        <a href="#" class="logo">
+
+            <span class="logo-icon">
+                📖
+            </span>
+
+            کتاب‌خانه
+
+        </a>
+
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="#">
+                    خانه
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    وبلاگ‌ها
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    درباره ما
+                </a>
+            </li>
+
+        </ul>
+
+
+        <div class="nav-buttons">
+
+            <a href="#" class="btn btn-outline">
+                ورود
+            </a>
+
+            <a href="#" class="btn btn-primary">
+                ثبت‌نام
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<main>
+
+
+    <!-- =========================
+         BREADCRUMB
+    ========================= -->
+
+    <div class="container">
+
+        <div class="breadcrumb">
+
+            <a href="#">
+                خانه
+            </a>
+
+            &nbsp; / &nbsp;
+
+            <span>
+            معرفی کتاب
+        </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         ARTICLE HEADER
+    ========================= -->
+
+    <div class="container">
+
+        <header class="article-header">
+
+        <span class="category">
+            معرفی کتاب
+        </span>
+
+            <h1>
+                داستانی که بعد از تمام شدن،
+                هنوز در ذهنت ادامه دارد
+            </h1>
+
+            <p>
+                نگاهی به یکی از کتاب‌هایی که می‌تواند
+                دید شما را نسبت به زندگی و آدم‌ها تغییر دهد.
+            </p>
+
+
+            <div class="article-meta">
+
+            <span>
+                ✍ نویسنده: علی رضایی
+            </span>
+
+                <span>
+                📅 ۱۲ مرداد ۱۴۰۵
+            </span>
+
+                <span>
+                👁 ۲۴۸ بازدید
+            </span>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+             COVER
+        ========================= -->
+
+        <div class="article-cover">
+
+            <img
+                    src="images/book-main.jpg"
+                    alt="تصویر کتاب"
+            >
+
+            <div class="cover-overlay"></div>
+
+        </div>
+
+
+        <!-- =========================
+             ARTICLE
+        ========================= -->
+
+        <div class="article-layout">
+
+
+            <article class="article-content">
+
+
+                <p>
+                    بعضی کتاب‌ها را می‌خوانیم و چند روز بعد
+                    جزئیاتشان را فراموش می‌کنیم؛ اما بعضی
+                    داستان‌ها به شکلی عجیب در ذهن ما باقی
+                    می‌مانند. انگار بعد از بستن آخرین صفحه،
+                    داستان هنوز تمام نشده است.
+                </p>
+
+
+                <p>
+                    کتابی که امروز درباره آن صحبت می‌کنیم
+                    یکی از همین تجربه‌هاست؛ داستانی که با
+                    شخصیت‌هایش ما را همراه می‌کند و آرام‌آرام
+                    ما را وارد دنیایی متفاوت می‌کند.
+                </p>
+
+
+                <h2>
+                    داستان درباره چیست؟
+                </h2>
+
+
+                <p>
+                    داستان زندگی شخصیتی را دنبال می‌کند که
+                    در نقطه‌ای مهم از زندگی خود قرار گرفته است.
+                    تصمیم‌هایی که می‌گیرد، آدم‌هایی که ملاقات
+                    می‌کند و اتفاقاتی که برایش رخ می‌دهد،
+                    باعث می‌شوند نگاه او به جهان تغییر کند.
+                </p>
+
+
+                <div class="quote">
+
+                    «گاهی یک داستان خوب قرار نیست چیزی
+                    به ما یاد بدهد؛ فقط قرار است باعث شود
+                    چیزهایی را که می‌دانستیم، دوباره ببینیم.»
+
+                </div>
+
+
+                <h2>
+                    چرا این کتاب ارزش خواندن دارد؟
+                </h2>
+
+
+                <p>
+                    چیزی که این کتاب را جذاب می‌کند فقط داستان
+                    آن نیست. شخصیت‌پردازی، فضای روایت و
+                    جزئیات کوچکی که نویسنده در طول داستان
+                    قرار داده، باعث می‌شوند خواننده احساس کند
+                    واقعاً در کنار شخصیت‌ها حضور دارد.
+                </p>
+
+
+                <p>
+                    اگر به داستان‌هایی علاقه دارید که بعد از
+                    تمام شدن هم ذهن شما را درگیر کنند، این کتاب
+                    می‌تواند انتخاب مناسبی برای شما باشد.
+                </p>
+
+
+                <!-- AUTHOR -->
+
+                <div class="author-box">
+
+                    <div class="author-avatar">
+                        ✍
+                    </div>
+
+                    <div class="author-info">
+
+                        <strong>
+                            علی رضایی
+                        </strong>
+
+                        <span>
+                        نویسنده و علاقه‌مند به کتاب
+                    </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SHARE -->
+
+                <div class="share">
+
+                <span class="share-title">
+                    اشتراک‌گذاری:
+                </span>
+
+                    <a href="#" class="share-btn">
+                        تل
+                    </a>
+
+                    <a href="#" class="share-btn">
+                        X
+                    </a>
+
+                    <a href="#" class="share-btn">
+                        in
+                    </a>
+
+                </div>
+
+
+            </article>
+
+
+            <!-- =========================
+                 SIDEBAR
+            ========================= -->
+
+            <aside class="sidebar">
+
+
+                <div class="side-box">
+
+                    <h3>
+                        درباره این مقاله
+                    </h3>
+
+                    <p>
+                        این نوشته برای معرفی کتاب و
+                        به اشتراک گذاشتن تجربه و دیدگاه
+                        درباره آن نوشته شده است.
+                    </p>
+
+                </div>
+
+
+                <div class="side-box">
+
+                    <h3>
+                        اطلاعات
+                    </h3>
+
+                    <div class="side-stat">
+
+                    <span>
+                        زمان مطالعه
+                    </span>
+
+                        <span>
+                        ۵ دقیقه
+                    </span>
+
+                    </div>
+
+                    <div class="side-stat">
+
+                    <span>
+                        دسته‌بندی
+                    </span>
+
+                        <span>
+                        رمان
+                    </span>
+
+                    </div>
+
+                    <div class="side-stat">
+
+                    <span>
+                        بازدید
+                    </span>
+
+                        <span>
+                        ۲۴۸
+                    </span>
+
+                    </div>
+
+                </div>
+
+
+            </aside>
+
+        </div>
+
+
+        <!-- =========================
+             COMMENTS
+        ========================= -->
+
+        <section class="comments-section">
+
+            <h2 class="comments-title">
+                نظرات کاربران
+            </h2>
+
+
+            <div class="comment">
+
+                <div class="comment-header">
+
+                    <div class="comment-avatar">
+                        م
+                    </div>
+
+                    <div>
+
+                        <div class="comment-name">
+                            مریم
+                        </div>
+
+                        <span class="comment-date">
+                        ۲ روز پیش
+                    </span>
+
+                    </div>
+
+                </div>
+
+                <p>
+                    معرفی خیلی خوبی بود. بعد از خواندن این
+                    مطلب واقعاً دوست دارم این کتاب را تهیه کنم.
+                </p>
+
+            </div>
+
+
+            <div class="comment">
+
+                <div class="comment-header">
+
+                    <div class="comment-avatar">
+                        س
+                    </div>
+
+                    <div>
+
+                        <div class="comment-name">
+                            سارا
+                        </div>
+
+                        <span class="comment-date">
+                        ۵ روز پیش
+                    </span>
+
+                    </div>
+
+                </div>
+
+                <p>
+                    مخصوصاً بخشی که درباره شخصیت اصلی
+                    نوشته بودید برای من جالب بود.
+                </p>
+
+            </div>
+
+
+            <!-- COMMENT FORM -->
+
+            <div class="comment-form">
+
+                <h3>
+                    نظر خودت را بنویس ✨
+                </h3>
+
+                <div class="form-group">
+
+                    <input
+                            type="text"
+                            placeholder="نام شما"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <input
+                            type="email"
+                            placeholder="ایمیل شما"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                <textarea
+                        placeholder="نظر شما درباره این مقاله..."
+                ></textarea>
+
+                </div>
+
+
+                <button class="btn btn-primary">
+                    ارسال نظر
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             RELATED
+        ========================= -->
+
+        <section class="related">
+
+            <h2 class="related-title">
+                شاید این‌ها را هم دوست داشته باشید
+            </h2>
+
+
+            <div class="related-grid">
+
+
+                <article class="related-card">
+
+                    <div class="related-image">
+
+                        <img
+                                src="images/book1.jpg"
+                                alt="کتاب"
+                        >
+
+                    </div>
+
+                    <div class="related-info">
+
+                        <h3>
+                            کتاب‌هایی برای روزهای آرام
+                        </h3>
+
+                        <a href="#">
+                            مطالعه مقاله ←
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <article class="related-card">
+
+                    <div class="related-image">
+
+                        <img
+                                src="images/book2.jpg"
+                                alt="کتاب"
+                        >
+
+                    </div>
+
+                    <div class="related-info">
+
+                        <h3>
+                            پنج رمان که نباید از دست بدهید
+                        </h3>
+
+                        <a href="#">
+                            مطالعه مقاله ←
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <article class="related-card">
+
+                    <div class="related-image">
+
+                        <img
+                                src="images/book3.jpg"
+                                alt="کتاب"
+                        >
+
+                    </div>
+
+                    <div class="related-info">
+
+                        <h3>
+                            وقتی یک کتاب زندگی‌ات را تغییر می‌دهد
+                        </h3>
+
+                        <a href="#">
+                            مطالعه مقاله ←
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-content">
+
+
+            <div>
+
+                <div class="footer-logo">
+                    📖 کتاب‌خانه
+                </div>
+
+                <p class="footer-description">
+                    جایی برای خواندن، نوشتن و کشف کردن
+                    دنیای بی‌پایان کتاب‌ها.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    دسترسی سریع
+                </h4>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="#">
+                            خانه
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            وبلاگ‌ها
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            درباره ما
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    حساب کاربری
+                </h4>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="#">
+                            ورود
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            ثبت‌نام
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="copyright">
+
+            © ۱۴۰۵ کتاب‌خانه — تمامی حقوق محفوظ است.
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+</body>
+
+</html>
+
