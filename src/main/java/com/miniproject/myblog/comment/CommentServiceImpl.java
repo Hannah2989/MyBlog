@@ -14,33 +14,26 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public List<Comment> getAllComments() {
+    public List<Comment> findCommentByBlog(int blogId) {
+        return commentRepository.findCommentByBlogIdAndApprovedTrue(blogId);
+    }
+
+    @Override
+    public List<Comment> findAll() {
         return commentRepository.findAll();
     }
 
     @Override
-    public Comment findCommentById(int id) {
-        return commentRepository.findById(id).orElse(null);
+    public void saveComment(Comment comment) {
+        commentRepository.save(comment);
     }
 
     @Override
-    public Comment createComment(Comment comment) {
-        return commentRepository.save(comment);
-    }
+    public void approvedComment(int commentId) {
+        Comment comment = commentRepository.findById(commentId).orElse(null);
+        if (comment == null) return ;
 
-    @Override
-    public void deleteComment(int id) {
-        commentRepository.deleteById(id);
-    }
-
-    @Override
-    public Comment approveComment(int id) {
-        Comment comment = commentRepository.findById(id).orElse(null);
-
-        if (comment != null) {
-            comment.setApproved(true);
-            return commentRepository.save(comment);
-        }
-        return null;
+        comment.setApproved(true);
+        commentRepository.save(comment);
     }
 }
