@@ -1,10 +1,11 @@
 package com.miniproject.myblog.blog;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/blogs")
 public class BlogController {
 
@@ -15,8 +16,9 @@ public class BlogController {
     }
 
     @PostMapping
-    public void save(@ModelAttribute Blog blog) {
+    public String save(@ModelAttribute Blog blog) {
         blogService.save(blog);
+        return "blogAdmin";
     }
 
     @DeleteMapping("/{id}")
@@ -30,6 +32,7 @@ public class BlogController {
     }
 
     @GetMapping
+    @ResponseBody
     public List<Blog> findAll() {
         return blogService.findAll();
     }
