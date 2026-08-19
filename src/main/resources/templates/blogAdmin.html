@@ -181,7 +181,7 @@
 
         .sidebar-menu a:hover {
 
-            background: rgba(224,159,62,.12);
+            background: rgba(224, 159, 62, .12);
 
             color: #e09f3e;
         }
@@ -193,8 +193,7 @@
 
             color: #fff3b0;
 
-            box-shadow:
-                    0 8px 20px rgba(158,42,43,.25);
+            box-shadow: 0 8px 20px rgba(158, 42, 43, .25);
         }
 
 
@@ -226,7 +225,7 @@
 
             border-radius: 14px;
 
-            background: rgba(255,243,176,.07);
+            background: rgba(255, 243, 176, .07);
         }
 
 
@@ -291,8 +290,7 @@
 
             background: white;
 
-            border-bottom:
-                    1px solid rgba(84,11,14,.08);
+            border-bottom: 1px solid rgba(84, 11, 14, .08);
 
             display: flex;
 
@@ -397,19 +395,16 @@
 
         .welcome {
 
-            background:
-
-                    radial-gradient(
-                            circle at 85% 30%,
-                            rgba(224,159,62,.2),
-                            transparent 25%
-                    ),
-
-                    linear-gradient(
-                            135deg,
-                            #540b0e,
-                            #9e2a2b
-                    );
+            background: radial-gradient(
+                    circle at 85% 30%,
+                    rgba(224, 159, 62, .2),
+                    transparent 25%
+            ),
+            linear-gradient(
+                    135deg,
+                    #540b0e,
+                    #9e2a2b
+            );
 
             color: #fff3b0;
 
@@ -450,94 +445,6 @@
             font-size: 70px;
 
             opacity: .2;
-        }
-
-
-        /* =====================================
-           STATISTICS
-        ===================================== */
-
-        .stats {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(4, 1fr);
-
-            gap: 18px;
-
-            margin-bottom: 35px;
-        }
-
-
-        .stat-card {
-
-            background: white;
-
-            border-radius: 18px;
-
-            padding: 22px;
-
-            box-shadow:
-                    0 8px 25px rgba(84,11,14,.06);
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 15px;
-
-            transition: .3s;
-        }
-
-
-        .stat-card:hover {
-
-            transform: translateY(-4px);
-
-            box-shadow:
-                    0 14px 30px rgba(84,11,14,.1);
-        }
-
-
-        .stat-icon {
-
-            width: 52px;
-            height: 52px;
-
-            border-radius: 14px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            font-size: 23px;
-        }
-
-
-        .stat-icon.blog {
-
-            background: #fff3b0;
-        }
-
-
-        .stat-icon.published {
-
-            background: #e8eee5;
-        }
-
-
-        .stat-icon.draft {
-
-            background: #f6dfdf;
-        }
-
-
-        .stat-icon.views {
-
-            background: #dce9eb;
         }
 
 
@@ -625,36 +532,8 @@
 
             padding: 25px;
 
-            box-shadow:
-                    0 8px 30px rgba(84,11,14,.06);
+            box-shadow: 0 8px 30px rgba(84, 11, 14, .06);
         }
-
-
-        /* =====================================
-           SEARCH
-        ===================================== */
-
-        .toolbar {
-
-            display: flex;
-
-            justify-content: space-between;
-
-            gap: 15px;
-
-            margin-bottom: 22px;
-        }
-
-
-        .search-box {
-
-            position: relative;
-
-            flex: 1;
-
-            max-width: 450px;
-        }
-
 
         .search-box input {
 
@@ -678,40 +557,7 @@
 
             border-color: #e09f3e;
 
-            box-shadow:
-                    0 0 0 3px rgba(224,159,62,.15);
-        }
-
-
-        .search-icon {
-
-            position: absolute;
-
-            right: 14px;
-
-            top: 50%;
-
-            transform: translateY(-50%);
-
-            color: #9e2a2b;
-        }
-
-
-        .filter {
-
-            border: 1px solid #eadfa4;
-
-            background: #fffdf0;
-
-            border-radius: 10px;
-
-            padding: 10px 15px;
-
-            color: #540b0e;
-
-            outline: none;
-
-            cursor: pointer;
+            box-shadow: 0 0 0 3px rgba(224, 159, 62, .15);
         }
 
 
@@ -759,8 +605,7 @@
 
             padding: 14px;
 
-            border-bottom:
-                    1px solid rgba(84,11,14,.07);
+            border-bottom: 1px solid rgba(84, 11, 14, .07);
 
             font-size: 13px;
 
@@ -862,14 +707,6 @@
         }
 
 
-        .status.draft {
-
-            background: #f5dddd;
-
-            color: #9e2a2b;
-        }
-
-
         /* =====================================
            ACTIONS
         ===================================== */
@@ -935,197 +772,11 @@
         }
 
 
-        /* =====================================
-           PAGINATION
-        ===================================== */
-
-        .pagination {
-
-            display: flex;
-
-            justify-content: center;
-
-            align-items: center;
-
-            gap: 7px;
-
-            margin-top: 25px;
-        }
-
-
-        .page {
-
-            width: 35px;
-            height: 35px;
-
-            border-radius: 8px;
-
-            border: 1px solid #eadfa4;
-
-            background: white;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            cursor: pointer;
-
-            color: #540b0e;
-
-            font-size: 12px;
-        }
-
-
-        .page.active {
-
-            background: #9e2a2b;
-
-            color: #fff3b0;
-
-            border-color: #9e2a2b;
-        }
-
-
-        /* =====================================
-           MODAL
-        ===================================== */
-
-        .modal {
-
-            position: fixed;
-
-            inset: 0;
-
-            background: rgba(84,11,14,.65);
-
-            display: none;
-
-            align-items: center;
-
-            justify-content: center;
-
-            padding: 20px;
-
-            z-index: 2000;
-
-            backdrop-filter: blur(4px);
-        }
-
-
-        .modal.active {
-
-            display: flex;
-        }
-
-
-        .modal-content {
-
-            width: min(700px, 100%);
-
-            max-height: 90vh;
-
-            overflow-y: auto;
-
-            background: white;
-
-            border-radius: 22px;
-
-            padding: 30px;
-
-            box-shadow:
-                    0 25px 70px rgba(0,0,0,.25);
-
-            animation:
-                    modalOpen .25s ease;
-        }
-
-
-        @keyframes modalOpen {
-
-            from {
-
-                opacity: 0;
-
-                transform: translateY(20px) scale(.98);
-
-            }
-
-            to {
-
-                opacity: 1;
-
-                transform: translateY(0) scale(1);
-
-            }
-
-        }
-
-
-        .modal-header {
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            margin-bottom: 25px;
-        }
-
-
         .modal-header h2 {
 
             color: #540b0e;
 
             font-size: 22px;
-        }
-
-
-        .close-modal {
-
-            width: 35px;
-            height: 35px;
-
-            border: none;
-
-            border-radius: 50%;
-
-            background: #fff3b0;
-
-            color: #9e2a2b;
-
-            cursor: pointer;
-
-            font-size: 18px;
-        }
-
-
-        /* =====================================
-           FORM
-        ===================================== */
-
-        .form-grid {
-
-            display: grid;
-
-            grid-template-columns:
-                1fr 1fr;
-
-            gap: 18px;
-        }
-
-
-        .form-group {
-
-            margin-bottom: 17px;
-        }
-
-
-        .form-group.full {
-
-            grid-column: 1 / -1;
         }
 
 
@@ -1171,8 +822,7 @@
 
             border-color: #e09f3e;
 
-            box-shadow:
-                    0 0 0 3px rgba(224,159,62,.12);
+            box-shadow: 0 0 0 3px rgba(224, 159, 62, .12);
         }
 
 
@@ -1181,34 +831,6 @@
             min-height: 150px;
 
             resize: vertical;
-        }
-
-
-        /* =====================================
-           IMAGE UPLOAD
-        ===================================== */
-
-        .image-upload {
-
-            border: 2px dashed #e09f3e;
-
-            border-radius: 12px;
-
-            padding: 25px;
-
-            text-align: center;
-
-            background: #fffdf0;
-
-            cursor: pointer;
-        }
-
-
-        .image-upload-icon {
-
-            font-size: 30px;
-
-            margin-bottom: 5px;
         }
 
 
@@ -1228,78 +850,7 @@
         }
 
 
-        /* =====================================
-           FORM BUTTONS
-        ===================================== */
-
-        .modal-actions {
-
-            display: flex;
-
-            justify-content: flex-start;
-
-            gap: 10px;
-
-            margin-top: 10px;
-
-            padding-top: 20px;
-
-            border-top:
-                    1px solid rgba(84,11,14,.08);
-        }
-
-
-        .save-btn {
-
-            border: none;
-
-            background: #9e2a2b;
-
-            color: #fff3b0;
-
-            padding: 11px 25px;
-
-            border-radius: 9px;
-
-            cursor: pointer;
-
-            font-size: 13px;
-        }
-
-
-        .cancel-btn {
-
-            border: none;
-
-            background: #fff3b0;
-
-            color: #540b0e;
-
-            padding: 11px 20px;
-
-            border-radius: 9px;
-
-            cursor: pointer;
-
-            font-size: 13px;
-        }
-
-
-        /* =====================================
-           RESPONSIVE
-        ===================================== */
-
-        @media(max-width: 1100px) {
-
-            .stats {
-
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
-        }
-
-
-        @media(max-width: 850px) {
+        @media (max-width: 850px) {
 
             .sidebar {
 
@@ -1363,7 +914,7 @@
         }
 
 
-        @media(max-width: 650px) {
+        @media (max-width: 650px) {
 
             .topbar {
 
@@ -1386,12 +937,6 @@
             .content {
 
                 padding: 18px;
-            }
-
-
-            .stats {
-
-                grid-template-columns: 1fr;
             }
 
 
@@ -1421,40 +966,11 @@
             }
 
 
-            .toolbar {
-
-                flex-direction: column;
-            }
-
-
-            .search-box {
-
-                max-width: none;
-            }
-
-
             .management-box {
 
                 padding: 15px;
             }
 
-
-            .form-grid {
-
-                grid-template-columns: 1fr;
-            }
-
-
-            .form-group.full {
-
-                grid-column: auto;
-            }
-
-
-            .modal-content {
-
-                padding: 22px;
-            }
         }
 
     </style>
@@ -1523,7 +1039,7 @@
 
             <li>
 
-                <a href="#">
+                <a href="http://localhost:8080/admin/comments">
 
                     <span class="menu-icon">
                         💬
@@ -1536,41 +1052,6 @@
                 </a>
 
             </li>
-
-
-            <li>
-
-                <a href="#">
-
-                    <span class="menu-icon">
-                        👥
-                    </span>
-
-                    <span>
-                        کاربران
-                    </span>
-
-                </a>
-
-            </li>
-
-
-            <li>
-
-                <a href="#">
-
-                    <span class="menu-icon">
-                        📊
-                    </span>
-
-                    <span>
-                        آمار سایت
-                    </span>
-
-                </a>
-
-            </li>
-
 
         </ul>
 
@@ -1682,7 +1163,7 @@
                     🔔
                 </div>
 
-                <a href="#" class="view-site">
+                <a href="http://localhost:8080" class="view-site">
                     مشاهده سایت ↗
                 </a>
 
@@ -1721,98 +1202,6 @@
             </section>
 
 
-            <!-- STATISTICS -->
-
-            <section class="stats">
-
-
-                <div class="stat-card">
-
-                    <div class="stat-icon blog">
-                        📝
-                    </div>
-
-                    <div class="stat-info">
-
-                        <span>
-                            کل وبلاگ‌ها
-                        </span>
-
-                        <strong>
-                            ۲۴
-                        </strong>
-
-                    </div>
-
-                </div>
-
-
-                <div class="stat-card">
-
-                    <div class="stat-icon published">
-                        ✓
-                    </div>
-
-                    <div class="stat-info">
-
-                        <span>
-                            منتشر شده
-                        </span>
-
-                        <strong>
-                            ۲۰
-                        </strong>
-
-                    </div>
-
-                </div>
-
-
-                <div class="stat-card">
-
-                    <div class="stat-icon draft">
-                        ✎
-                    </div>
-
-                    <div class="stat-info">
-
-                        <span>
-                            پیش‌نویس
-                        </span>
-
-                        <strong>
-                            ۴
-                        </strong>
-
-                    </div>
-
-                </div>
-
-
-                <div class="stat-card">
-
-                    <div class="stat-icon views">
-                        👁
-                    </div>
-
-                    <div class="stat-info">
-
-                        <span>
-                            مجموع بازدید
-                        </span>
-
-                        <strong>
-                            ۱۲.۸K
-                        </strong>
-
-                    </div>
-
-                </div>
-
-
-            </section>
-
-
             <!-- MANAGEMENT -->
 
             <section>
@@ -1829,58 +1218,16 @@
                     </div>
 
 
-                    <button
-                            class="add-btn"
-                            onclick="openAddModal()">
+                    <a class="add-btn" href="http://localhost:8080/admin/addBlog">
 
                         + افزودن وبلاگ
 
-                    </button>
+                    </a>
 
                 </div>
 
 
                 <div class="management-box">
-
-
-                    <!-- TOOLBAR -->
-
-                    <div class="toolbar">
-
-
-                        <div class="search-box">
-
-                            <span class="search-icon">
-                                🔍
-                            </span>
-
-                            <input
-                                    type="text"
-                                    placeholder="جست‌وجوی عنوان وبلاگ..."
-                                    id="searchInput">
-
-                        </div>
-
-
-                        <select class="filter">
-
-                            <option>
-                                همه وضعیت‌ها
-                            </option>
-
-                            <option>
-                                منتشر شده
-                            </option>
-
-                            <option>
-                                پیش‌نویس
-                            </option>
-
-                        </select>
-
-
-                    </div>
-
 
                     <!-- TABLE -->
 
@@ -1897,23 +1244,11 @@
                                 </th>
 
                                 <th>
-                                    دسته‌بندی
-                                </th>
-
-                                <th>
                                     نویسنده
                                 </th>
 
                                 <th>
-                                    تاریخ
-                                </th>
-
-                                <th>
                                     وضعیت
-                                </th>
-
-                                <th>
-                                    بازدید
                                 </th>
 
                                 <th>
@@ -1925,378 +1260,7 @@
                             </thead>
 
 
-                            <tbody>
-
-
-                            <!-- BLOG 1 -->
-
-                            <tr>
-
-                                <td>
-
-                                    <div class="blog-info">
-
-                                        <div class="blog-thumb">
-
-                                            <img
-                                                    src="images/book1.jpg"
-                                                    alt="کتاب">
-
-                                        </div>
-
-                                        <div class="blog-name">
-
-                                            <strong>
-                                                صد سال تنهایی
-                                            </strong>
-
-                                            <span>
-                                                یک سفر متفاوت...
-                                            </span>
-
-                                        </div>
-
-                                    </div>
-
-                                </td>
-
-
-                                <td>
-                                    رمان
-                                </td>
-
-
-                                <td>
-                                    علی رضایی
-                                </td>
-
-
-                                <td>
-                                    ۱۲ مرداد ۱۴۰۵
-                                </td>
-
-
-                                <td>
-
-                                    <span class="status published">
-                                        منتشر شده
-                                    </span>
-
-                                </td>
-
-
-                                <td>
-                                    ۲۴۸
-                                </td>
-
-
-                                <td>
-
-                                    <div class="actions">
-
-                                        <button
-                                                class="action-btn action-view"
-                                                title="مشاهده">
-
-                                            👁
-
-                                        </button>
-
-
-                                        <button
-                                                class="action-btn action-edit"
-                                                title="ویرایش"
-                                                onclick="openEditModal()">
-
-                                            ✎
-
-                                        </button>
-
-
-                                        <button
-                                                class="action-btn action-delete"
-                                                title="حذف"
-                                                onclick="deleteBlog()">
-
-                                            🗑
-
-                                        </button>
-
-                                    </div>
-
-                                </td>
-
-                            </tr>
-
-
-                            <!-- BLOG 2 -->
-
-                            <tr>
-
-                                <td>
-
-                                    <div class="blog-info">
-
-                                        <div class="blog-thumb">
-
-                                            <img
-                                                    src="images/book2.jpg"
-                                                    alt="کتاب">
-
-                                        </div>
-
-                                        <div class="blog-name">
-
-                                            <strong>
-                                                شازده کوچولو
-                                            </strong>
-
-                                            <span>
-                                                داستانی برای همه...
-                                            </span>
-
-                                        </div>
-
-                                    </div>
-
-                                </td>
-
-
-                                <td>
-                                    ادبیات
-                                </td>
-
-
-                                <td>
-                                    سارا احمدی
-                                </td>
-
-
-                                <td>
-                                    ۱۰ مرداد ۱۴۰۵
-                                </td>
-
-
-                                <td>
-
-                                    <span class="status published">
-                                        منتشر شده
-                                    </span>
-
-                                </td>
-
-
-                                <td>
-                                    ۵۱۲
-                                </td>
-
-
-                                <td>
-
-                                    <div class="actions">
-
-                                        <button
-                                                class="action-btn action-view">
-                                            👁
-                                        </button>
-
-                                        <button
-                                                class="action-btn action-edit"
-                                                onclick="openEditModal()">
-                                            ✎
-                                        </button>
-
-                                        <button
-                                                class="action-btn action-delete"
-                                                onclick="deleteBlog()">
-                                            🗑
-                                        </button>
-
-                                    </div>
-
-                                </td>
-
-                            </tr>
-
-
-                            <!-- BLOG 3 -->
-
-                            <tr>
-
-                                <td>
-
-                                    <div class="blog-info">
-
-                                        <div class="blog-thumb">
-
-                                            <img
-                                                    src="images/book3.jpg"
-                                                    alt="کتاب">
-
-                                        </div>
-
-                                        <div class="blog-name">
-
-                                            <strong>
-                                                جنایت و مکافات
-                                            </strong>
-
-                                            <span>
-                                                نگاهی به یک شاهکار...
-                                            </span>
-
-                                        </div>
-
-                                    </div>
-
-                                </td>
-
-
-                                <td>
-                                    کلاسیک
-                                </td>
-
-
-                                <td>
-                                    محمد کریمی
-                                </td>
-
-
-                                <td>
-                                    ۸ مرداد ۱۴۰۵
-                                </td>
-
-
-                                <td>
-
-                                    <span class="status draft">
-                                        پیش‌نویس
-                                    </span>
-
-                                </td>
-
-
-                                <td>
-                                    ۰
-                                </td>
-
-
-                                <td>
-
-                                    <div class="actions">
-
-                                        <button
-                                                class="action-btn action-view">
-                                            👁
-                                        </button>
-
-                                        <button
-                                                class="action-btn action-edit"
-                                                onclick="openEditModal()">
-                                            ✎
-                                        </button>
-
-                                        <button
-                                                class="action-btn action-delete"
-                                                onclick="deleteBlog()">
-                                            🗑
-                                        </button>
-
-                                    </div>
-
-                                </td>
-
-                            </tr>
-
-
-                            <!-- BLOG 4 -->
-
-                            <tr>
-
-                                <td>
-
-                                    <div class="blog-info">
-
-                                        <div class="blog-thumb">
-
-                                            <img
-                                                    src="images/book4.jpg"
-                                                    alt="کتاب">
-
-                                        </div>
-
-                                        <div class="blog-name">
-
-                                            <strong>
-                                                کتابخانه نیمه‌شب
-                                            </strong>
-
-                                            <span>
-                                                میان زندگی‌های ممکن...
-                                            </span>
-
-                                        </div>
-
-                                    </div>
-
-                                </td>
-
-
-                                <td>
-                                    روانشناسی
-                                </td>
-
-
-                                <td>
-                                    نازنین مرادی
-                                </td>
-
-
-                                <td>
-                                    ۵ مرداد ۱۴۰۵
-                                </td>
-
-
-                                <td>
-
-                                    <span class="status published">
-                                        منتشر شده
-                                    </span>
-
-                                </td>
-
-
-                                <td>
-                                    ۸۷۶
-                                </td>
-
-
-                                <td>
-
-                                    <div class="actions">
-
-                                        <button
-                                                class="action-btn action-view">
-                                            👁
-                                        </button>
-
-                                        <button
-                                                class="action-btn action-edit"
-                                                onclick="openEditModal()">
-                                            ✎
-                                        </button>
-
-                                        <button
-                                                class="action-btn action-delete"
-                                                onclick="deleteBlog()">
-                                            🗑
-                                        </button>
-
-                                    </div>
-
-                                </td>
-
-                            </tr>
+                            <tbody id="tbody">
 
 
                             </tbody>
@@ -2304,38 +1268,6 @@
                         </table>
 
                     </div>
-
-
-                    <!-- PAGINATION -->
-
-                    <div class="pagination">
-
-                        <div class="page">
-                            ‹
-                        </div>
-
-                        <div class="page active">
-                            ۱
-                        </div>
-
-                        <div class="page">
-                            ۲
-                        </div>
-
-                        <div class="page">
-                            ۳
-                        </div>
-
-                        <div class="page">
-                            ۴
-                        </div>
-
-                        <div class="page">
-                            ›
-                        </div>
-
-                    </div>
-
 
                 </div>
 
@@ -2348,330 +1280,93 @@
 
 </div>
 
-
-<!-- =================================
-     ADD / EDIT MODAL
-================================== -->
-
-<div class="modal" id="blogModal">
-
-
-    <div class="modal-content">
-
-
-        <div class="modal-header">
-
-            <h2 id="modalTitle">
-                افزودن وبلاگ جدید
-            </h2>
-
-            <button
-                    class="close-modal"
-                    onclick="closeModal()">
-
-                ×
-
-            </button>
-
-        </div>
-
-
-        <form>
-
-
-            <div class="form-grid">
-
-
-                <div class="form-group">
-
-                    <label>
-                        عنوان وبلاگ
-                    </label>
-
-                    <input
-                            type="text"
-                            placeholder="مثلاً: صد سال تنهایی">
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        دسته‌بندی
-                    </label>
-
-                    <select>
-
-                        <option>
-                            انتخاب دسته‌بندی
-                        </option>
-
-                        <option>
-                            رمان
-                        </option>
-
-                        <option>
-                            ادبیات
-                        </option>
-
-                        <option>
-                            کلاسیک
-                        </option>
-
-                        <option>
-                            روانشناسی
-                        </option>
-
-                        <option>
-                            علمی
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="form-group full">
-
-                    <label>
-                        تصویر وبلاگ
-                    </label>
-
-                    <div class="image-upload">
-
-                        <div class="image-upload-icon">
-                            📷
-                        </div>
-
-                        <p>
-                            تصویر را اینجا بکشید یا انتخاب کنید
-                        </p>
-
-                        <span>
-                            JPG / PNG — حداکثر ۵ مگابایت
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="form-group full">
-
-                    <label>
-                        خلاصه وبلاگ
-                    </label>
-
-                    <textarea
-                            placeholder="خلاصه‌ای کوتاه درباره این مقاله...">
-                    </textarea>
-
-                </div>
-
-
-                <div class="form-group full">
-
-                    <label>
-                        متن وبلاگ
-                    </label>
-
-                    <textarea
-                            style="min-height:220px;"
-                            placeholder="متن کامل وبلاگ را بنویسید...">
-                    </textarea>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        وضعیت
-                    </label>
-
-                    <select>
-
-                        <option>
-                            منتشر شده
-                        </option>
-
-                        <option>
-                            پیش‌نویس
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        نویسنده
-                    </label>
-
-                    <input
-                            type="text"
-                            placeholder="نام نویسنده">
-
-                </div>
-
-
-            </div>
-
-
-            <div class="modal-actions">
-
-                <button
-                        type="button"
-                        class="save-btn">
-
-                    ذخیره وبلاگ
-
-                </button>
-
-
-                <button
-                        type="button"
-                        class="cancel-btn"
-                        onclick="closeModal()">
-
-                    انصراف
-
-                </button>
-
-            </div>
-
-
-        </form>
-
-
-    </div>
-
-</div>
-
-
-<script>
-
-
-    /* =========================
-       MODAL
-    ========================= */
-
-    const modal =
-        document.getElementById("blogModal");
-
-    const modalTitle =
-        document.getElementById("modalTitle");
-
-
-    function openAddModal() {
-
-        modalTitle.innerText =
-            "افزودن وبلاگ جدید";
-
-        modal.classList.add("active");
-    }
-
-
-    function openEditModal() {
-
-        modalTitle.innerText =
-            "ویرایش وبلاگ";
-
-        modal.classList.add("active");
-    }
-
-
-    function closeModal() {
-
-        modal.classList.remove("active");
-    }
-
-
-    /* =========================
-       CLOSE WHEN CLICK OUTSIDE
-    ========================= */
-
-    modal.addEventListener(
-        "click",
-        function(event) {
-
-            if (event.target === modal) {
-
-                closeModal();
-
-            }
-
-        }
-    );
-
-
-    /* =========================
-       DELETE
-    ========================= */
-
-    function deleteBlog() {
-
-        const result =
-            confirm(
-                "آیا مطمئن هستید که می‌خواهید این وبلاگ را حذف کنید؟"
-            );
-
-        if (result) {
-
-            alert(
-                "وبلاگ با موفقیت حذف شد."
-            );
-
-        }
-
-    }
-
-
-    /* =========================
-       SEARCH
-    ========================= */
-
-    const searchInput =
-        document.getElementById("searchInput");
-
-
-    searchInput.addEventListener(
-        "input",
-        function() {
-
-            const value =
-                this.value.toLowerCase();
-
-            const rows =
-                document.querySelectorAll(
-                    "tbody tr"
-                );
-
-
-            rows.forEach(
-                function(row) {
-
-                    const text =
-                        row.innerText.toLowerCase();
-
-                    row.style.display =
-                        text.includes(value)
-                            ? ""
-                            : "none";
-
-                }
-            );
-
-        }
-    );
-
-
-</script>
-
-
 </body>
 
 </html>
+<script>
+
+    function getBlogs() {
+        fetch("http://localhost:8080/blogs")
+            .then(res => res.json())
+            .then(res => {
+                console.log(res);
+                for (let i = 0; i < res.length; i++) {
+                    convertToTr(res[i]);
+                }
+            })
+    }
+
+    function convertToTr(blog) {
+        const tr = `
+                            <tr>
+
+                                <td>
+
+                                    <div class="blog-info">
+
+                                        <div class="blog-thumb">
+
+                                            <img
+                                                    src="${blog.image}"
+                                                    alt="کتاب">
+
+                                        </div>
+
+                                        <div class="blog-name">
+
+                                            <strong>
+                                                ${blog.title}
+                                            </strong>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+                                <td>
+                                    هانا رستمی
+                                </td>
+
+                                <td>
+
+                                    <span class="status published">
+                                        منتشر شده
+                                    </span>
+
+                                </td>
+
+                                <td>
+
+                                    <div class="actions">
+
+                                        <button
+                                                class="action-btn action-view">
+                                            👁
+                                        </button>
+
+                                        <button
+                                                class="action-btn action-edit"
+                                                onclick="">
+                                            ✎
+                                        </button>
+
+                                        <button
+                                                class="action-btn action-delete"
+                                                onclick="">
+                                            🗑
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>`
+
+        document.getElementById("tbody").innerHTML += tr;
+    }
+
+    getBlogs();
+
+
+</script>
