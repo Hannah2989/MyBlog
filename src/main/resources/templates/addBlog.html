@@ -53,8 +53,7 @@
 
             color: #fff3b0;
 
-            box-shadow:
-                    0 5px 20px rgba(84, 11, 14, .15);
+            box-shadow: 0 5px 20px rgba(84, 11, 14, .15);
         }
 
         .logo {
@@ -138,9 +137,7 @@
 
             padding: 30px;
 
-            box-shadow:
-                    0 15px 40px
-                    rgba(84, 11, 14, .10);
+            box-shadow: 0 15px 40px rgba(84, 11, 14, .10);
         }
 
         .card-title {
@@ -237,9 +234,7 @@
 
             background: white;
 
-            box-shadow:
-                    0 0 0 3px
-                    rgba(224, 159, 62, .12);
+            box-shadow: 0 0 0 3px rgba(224, 159, 62, .12);
         }
 
         .input::placeholder,
@@ -247,18 +242,6 @@
             color: #aaa080;
         }
 
-        /* ================================
-           TWO COLUMNS
-        ================================= */
-
-        .two-columns {
-            display: grid;
-
-            grid-template-columns:
-                1fr 1fr;
-
-            gap: 15px;
-        }
 
         /* ================================
            IMAGE UPLOAD
@@ -328,9 +311,6 @@
             line-height: 1.8;
         }
 
-        #imageInput {
-            display: none;
-        }
 
         /* ================================
            IMAGE PREVIEW
@@ -385,28 +365,23 @@
         }
 
         .btn-primary {
-            background:
-                    linear-gradient(
-                            135deg,
-                            #540b0e,
-                            #9e2a2b
-                    );
+            background: linear-gradient(
+                    135deg,
+                    #540b0e,
+                    #9e2a2b
+            );
 
             color: #fff3b0;
 
             flex: 1;
 
-            box-shadow:
-                    0 8px 18px
-                    rgba(84, 11, 14, .16);
+            box-shadow: 0 8px 18px rgba(84, 11, 14, .16);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
 
-            box-shadow:
-                    0 12px 23px
-                    rgba(84, 11, 14, .22);
+            box-shadow: 0 12px 23px rgba(84, 11, 14, .22);
         }
 
         .btn-secondary {
@@ -434,9 +409,7 @@
 
             margin-bottom: 20px;
 
-            box-shadow:
-                    0 15px 40px
-                    rgba(84, 11, 14, .13);
+            box-shadow: 0 15px 40px rgba(84, 11, 14, .13);
         }
 
         .side-card h3 {
@@ -488,9 +461,7 @@
 
             overflow: hidden;
 
-            box-shadow:
-                    0 15px 40px
-                    rgba(84, 11, 14, .10);
+            box-shadow: 0 15px 40px rgba(84, 11, 14, .10);
         }
 
         .preview-header {
@@ -516,12 +487,11 @@
 
             border-radius: 12px;
 
-            background:
-                    linear-gradient(
-                            135deg,
-                            #9e2a2b,
-                            #540b0e
-                    );
+            background: linear-gradient(
+                    135deg,
+                    #9e2a2b,
+                    #540b0e
+            );
 
             display: flex;
 
@@ -708,7 +678,7 @@
 
 
             <form
-                    action="/admin/blogs/add"
+                    action="http://localhost:8080/blogs"
                     method="post"
                     enctype="multipart/form-data">
 
@@ -733,97 +703,6 @@
 
                 </div>
 
-
-                <!-- CATEGORY + AUTHOR -->
-
-                <div class="two-columns">
-
-
-                    <div class="form-group">
-
-                        <label>
-                            دسته‌بندی
-                        </label>
-
-                        <select
-                                class="select"
-                                name="category">
-
-                            <option value="">
-                                انتخاب دسته‌بندی
-                            </option>
-
-                            <option value="fiction">
-                                داستان و رمان
-                            </option>
-
-                            <option value="literature">
-                                ادبیات
-                            </option>
-
-                            <option value="philosophy">
-                                فلسفه
-                            </option>
-
-                            <option value="psychology">
-                                روان‌شناسی
-                            </option>
-
-                            <option value="history">
-                                تاریخی
-                            </option>
-
-                            <option value="science">
-                                علمی
-                            </option>
-
-                            <option value="other">
-                                سایر
-                            </option>
-
-                        </select>
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label>
-                            نویسنده کتاب
-                        </label>
-
-                        <input
-                                class="input"
-                                type="text"
-                                name="bookAuthor"
-                                placeholder="مثلاً: آنتوان دو سنت اگزوپری">
-
-                    </div>
-
-
-                </div>
-
-
-                <!-- SHORT DESCRIPTION -->
-
-                <div class="form-group">
-
-                    <label>
-                        خلاصه کوتاه
-                        <span class="required">*</span>
-                    </label>
-
-                    <textarea
-                            class="textarea"
-                            style="min-height: 110px;"
-                            name="summary"
-                            placeholder="یک معرفی کوتاه و جذاب از این وبلاگ بنویس..."
-                            maxlength="500"
-                            required></textarea>
-
-                </div>
-
-
                 <!-- CONTENT -->
 
                 <div class="form-group">
@@ -835,7 +714,7 @@
 
                     <textarea
                             class="textarea"
-                            name="content"
+                            name="description"
                             placeholder="متن کامل وبلاگ را اینجا بنویس..."
                             required></textarea>
 
@@ -846,49 +725,18 @@
 
                 <div class="form-group">
 
-                    <label>
-                        تصویر وبلاگ
-                    </label>
+                    <label for="image">
 
-
-                    <label
-                            class="image-upload"
-                            for="imageInput">
-
-                        <div class="upload-icon">
-                            🖼️
-                        </div>
-
-                        <strong>
-                            تصویر را انتخاب کنید
-                        </strong>
-
-                        <span>
-                            فرمت‌های JPG، PNG یا WEBP
-                            <br>
-                            حداکثر حجم پیشنهادی ۵ مگابایت
-                        </span>
+                        لینک تصویر وبلاگ
 
                     </label>
-
 
                     <input
-                            type="file"
-                            id="imageInput"
+                            class="input"
+                            type="text"
+                            id="image"
                             name="image"
-                            accept="image/png,image/jpeg,image/webp">
-
-
-                    <div
-                            class="preview"
-                            id="preview">
-
-                        <img
-                                id="previewImage"
-                                src=""
-                                alt="پیش‌نمایش تصویر">
-
-                    </div>
+                            placeholder="https://example.com/image.jpg">
 
                 </div>
 
@@ -1015,15 +863,6 @@
                     </div>
 
 
-                    <span
-                            class="preview-category"
-                            id="previewCategory">
-
-                        دسته‌بندی
-
-                    </span>
-
-
                     <h2
                             class="preview-title"
                             id="previewTitle">
@@ -1031,18 +870,6 @@
                         عنوان وبلاگ شما
 
                     </h2>
-
-
-                    <p
-                            class="preview-description"
-                            id="previewDescription">
-
-                        خلاصه وبلاگ شما در این قسمت
-                        نمایش داده خواهد شد.
-
-                    </p>
-
-
                 </div>
 
             </div>
@@ -1054,159 +881,6 @@
     </div>
 
 </main>
-
-
-<script>
-
-    /* =========================================
-       IMAGE PREVIEW
-    ========================================= */
-
-    const imageInput =
-        document.getElementById("imageInput");
-
-    const preview =
-        document.getElementById("preview");
-
-    const previewImage =
-        document.getElementById("previewImage");
-
-
-    imageInput.addEventListener(
-        "change",
-        function () {
-
-            const file =
-                this.files[0];
-
-            if (file) {
-
-                const reader =
-                    new FileReader();
-
-                reader.onload =
-                    function (event) {
-
-                        previewImage.src =
-                            event.target.result;
-
-                        preview.style.display =
-                            "block";
-
-                    };
-
-                reader.readAsDataURL(file);
-
-            }
-
-        }
-    );
-
-
-    /* =========================================
-       LIVE TITLE PREVIEW
-    ========================================= */
-
-    const title =
-        document.getElementById("title");
-
-    const previewTitle =
-        document.getElementById("previewTitle");
-
-
-    title.addEventListener(
-        "input",
-        function () {
-
-            if (this.value.trim() === "") {
-
-                previewTitle.innerText =
-                    "عنوان وبلاگ شما";
-
-            } else {
-
-                previewTitle.innerText =
-                    this.value;
-
-            }
-
-        }
-    );
-
-
-    /* =========================================
-       LIVE DESCRIPTION PREVIEW
-    ========================================= */
-
-    const summary =
-        document.querySelector(
-            'textarea[name="summary"]'
-        );
-
-    const previewDescription =
-        document.getElementById(
-            "previewDescription"
-        );
-
-
-    summary.addEventListener(
-        "input",
-        function () {
-
-            if (this.value.trim() === "") {
-
-                previewDescription.innerText =
-                    "خلاصه وبلاگ شما در این قسمت نمایش داده خواهد شد.";
-
-            } else {
-
-                previewDescription.innerText =
-                    this.value;
-
-            }
-
-        }
-    );
-
-
-    /* =========================================
-       CATEGORY PREVIEW
-    ========================================= */
-
-    const category =
-        document.querySelector(
-            'select[name="category"]'
-        );
-
-    const previewCategory =
-        document.getElementById(
-            "previewCategory"
-        );
-
-
-    category.addEventListener(
-        "change",
-        function () {
-
-            if (this.value === "") {
-
-                previewCategory.innerText =
-                    "دسته‌بندی";
-
-            } else {
-
-                previewCategory.innerText =
-                    this.options[
-                        this.selectedIndex
-                        ].text;
-
-            }
-
-        }
-    );
-
-</script>
-
 
 </body>
 
